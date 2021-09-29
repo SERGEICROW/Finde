@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <Meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles_home.css" %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<body>
+
+<header>
+
+    <div class="top-header">
+        <div id="logo-name">
+            <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
+
+            <h1 id="name">
+                F<span style="color: #00B050;">inde</span>
+            </h1>
+        </div>
+
+        <form>
+            <input id="mainSearch" placeholder="Busca aqui xdxdxd"/>
+            <button id="searchButton">Buscar</button>
+        </form>
+
+        <div id="log-sign-buttons">
+            <a href="log.html">
+                <button class="button type1">
+                    Ingreso
+                </button>
+            </a>
+            <a href="sign.html">
+                <button class="button type1">
+                    Registro
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div>
+        <ul class="low-header">
+            <li class="cp">
+                <span id="cp-icon">edit_location_alt</span>
+                <input type="text" id="cp-input" placeholder="Ingresa tu CP">
+            </li>
+            <li class="cp"><span class="material-icons">push_pin</span><a href="#">Favoritos</a></li>
+            <li><span class="material-icons">playlist_add</span><a href="#">Publicar</a></li>
+            <li><span class="material-icons">my_location</span><a href="#">Locacion</a></li>
+        </ul>
+    </div>
+
+</header>
+
+<main style="background-color: black; height: 100%" >
+
+    <div style="background-color: white; height: 1000px"></div>
+
+</main>
+
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+        async
+></script>
+
+{#<script src="js_home.js"></script>#}
+
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+}
+
+.logo {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    margin-top: 1px;
+}
+
+
+
+#name {
+
+}
+
+header {
+    position: fixed;
+    background-color: whitesmoke;
+    border-bottom: 2px solid darkgray;
+    width: 100%;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    margin-bottom: 5px;
+}
+
+
+
+.low-header {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 30%;
+    margin-bottom: 10px;
+}
+
+#logo-name {
+    display: flex;
+}
+
+#log-sign-buttons {
+    display: flex;
+    margin-left: 20px;
+}
+
+h1 {
+    margin-top: 10px;
+    cursor: pointer;
+    color: #00afee;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+ul {
+    margin-right: 20px;
+    padding: 0;
+}
+
+.button {
+    position: relative;
+    padding: .8em 1em;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 18px;
+    margin: 5px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.button.type1 {
+    font-size: 20px;
+    color: #888888;
+}
+
+.button.type1.type1::after,
+.button.type1.type1::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    border: 2px solid;
+    transition: all 0.6s ease;
+    border-radius: 2px;
+}
+
+.button.type1.type1::after {
+    bottom: 0;
+    right: 0;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: #00B050;
+    border-right-color: #00B050;
+}
+
+.button.type1.type1::before {
+    top: 0;
+    left: 0;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #00afee;
+    border-left-color: #00afee;
+
+}
+
+.button.type1.type1:hover:after,
+.button.type1.type1:hover:before {
+    width: 100%;
+    height: 100%;
+
+}
+
+form {
+    display: flex;
+    height: 40px;
+    margin-top: 9px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+#mainSearch {
+    margin-right: 10px;
+    width: 400px;
+    padding: 2%;
+    font-size: 110%;
+    border-style: hidden;
+}
+
+#searchButton {
+    width: 90px;
+    padding: 2%;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #00B050;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+#searchButton:hover {
+    background: #00B050;
+}
+
+#searchButton:active {
+    background-color: #00B050;
+    box-shadow: 0 5px #999;
+    transform: translateY(4px);
+}
+
+:link{
+    font-family: 'Ubuntu Mono', monospace;
+    font-weight: lighter;
+    font-size: 20px;
+    color: gray;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+:visited {
+    color: gray;
+}
+
+:hover {
+    color: #00afee;
+}
+
+
+
+li {
+    display: flex;
+    align-items: center;
+}
+
+.material-icons {
+    font-size: 25px !important;
+    color: gray;
+    margin-right: 10px;
+
+
+}
+
+#cp-icon {
+    font-family: "Material Icons", serif;
+    content: "\e5cc";
+    font-size: 37px !important;
+    color: #00B050;
+    margin-right: 10px;
+}
+
+#cp-input {
+    background: whitesmoke;
+    font-size: 19px;
+    height: 40px;
+    border-style: none;
+    width: 120px;
+}
+
+::placeholder {
+    color: #00afee;
+    opacity: 60%;
+}
+
+.nav {
+    margin-left: 5%;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+    height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+

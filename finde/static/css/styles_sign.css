@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    height: 150px;
+}
+
+#main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px;
+    width: 700px;
+}
+
+#column {
+    overflow: hidden;
+    border-style: solid;
+    border-color: #00afee;
+    width: 500px;
+}
+
+#logo {
+    height: 50px;
+
+}
+
+h1 {
+    margin-top: 11px;
+    cursor: pointer;
+    color: #00afee;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+h2 {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-weight: lighter;
+    font-size: 24px;
+    padding-left: 30px;
+    color: #00B050;
+}
+
+h3 {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    color: dimgray;
+
+}
+
+.column-header {
+    display: flex;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+.column-div {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 10px;
+}
+
+.column-caption {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#checkbox-pswrd {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 30px;
+}
+
+#checkbox {
+    margin-left: 5px;
+    margin-right: 5px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+
+input {
+    font-size: 14px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    border-width: thin;
+    border-color: gainsboro;
+    border-style: double;
+}
+
+#message p {
+    padding: 0px 35px;
+    font-size: 14px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+}
+
+.column-footer {
+    display: flex;
+    justify-content: space-evenly;
+    position: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bouncy {
+    animation: bouncy 5s infinite linear;
+    position: relative;
+}
+
+@keyframes bouncy {
+    0% {
+        top: 0em
+    }
+    40% {
+        top: 0em
+    }
+    43% {
+        top: -0.9em
+    }
+    46% {
+        top: 0em
+    }
+    48% {
+        top: -0.4em
+    }
+    50% {
+        top: 0em
+    }
+    100% {
+        top: 0em;
+    }
+}
+
+#subm {
+    background: #00afee;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+@media all and (max-width: 30em) {
+
+}
+
+.link {
+    font-size: 20px;
+    font-family: 'Gowun Dodum', sans-serif;
+    font-weight: bolder;
+    color: #00afee;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#captcha {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}

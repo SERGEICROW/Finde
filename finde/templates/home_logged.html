@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <Meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles_home_logged.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<body>
+
+<header>
+
+    <div class="top-header">
+        <div id="logo-name">
+            <img class="logo" src="{% static 'imgs/img_logo' %}" alt="logo">
+
+            <h1 id="name">
+                F<span style="color: #00B050;">inde</span>
+            </h1>
+        </div>
+
+        <form>
+            <input id="mainSearch" placeholder="Busca aqui xdxdxd"/>
+            <button id="searchButton">Buscar</button>
+        </form>
+
+        <div class="profile">
+            <div class="ntfMenu-toggle">
+                <span id="notification-icon">notifications</span>
+                <div class="toggle-ntf">
+                    <div class="ntf-dropMenu">
+                        <div class="ntf-content">
+                            PRUEBA DE BARRA DE NOTIFICACIONES
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropMenu-toggle">
+                <img id="profile-pic" src="img_goat_profile_pic.jpg">
+                <h1>{{ request.user }}</h1>
+                <div class="toggle">
+                    <div class="dropMenu">
+                        <ul id="left-column">
+                            <li><span class="material-icons l-icon">manage_accounts</span></li>
+                            <li><span class="material-icons l-icon">favorite</span></li>
+                            <li><span class="material-icons l-icon">format_list_bulleted</span></li>
+                            <li><span class="material-icons l-icon">settings</span></li>
+                            <li><span class="material-icons l-icon">logout</span></li>
+                        </ul>
+                        <ul id="right-column">
+                            <li><a href="#"><h2>Editar Perfil</h2></a></li>
+                            <li><a href="#"><h2>Favoritos</h2></a></li>
+                            <li><a href="#"><h2>Mss Listados</h2></a></li>
+                            <li><a href="#"><h2>Configuracion</h2></a></li>
+                            <li><a href="home.html"><h2>Logout</h2></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <span><a href="{% url 'logout' %}">Logout</a></span>
+    </div>
+
+    <div>
+        <ul class="low-header">
+            <li class="cp">
+                <span id="cp-icon">edit_location_alt</span>
+                <input type="text" id="cp-input" placeholder="Ingresa tu CP">
+            </li>
+            <li class="cp"><span class="material-icons">push_pin</span><a href="#">Favoritos</a></li>
+            <li><span class="material-icons">playlist_add</span><a href="#">Publicar</a></li>
+            <li><span class="material-icons">my_location</span><a href="#">Locacion</a></li>
+        </ul>
+    </div>
+
+</header>
+
+
+<main style="background-color: black; height: 100%">
+
+    <div style="background-color: white; height: 1000px"></div>
+
+</main>
+
+<script type="text/javascript" src="js_home_logged.js"></script>
+<script src="source/js/maps.js" charset="UTF-8"></script>
+
+
+</body>
+
+</html>

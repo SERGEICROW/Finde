@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles_sign.css" %}">
+
+</head>
+<body>
+
+<header>
+
+</header>
+
+<div id="main-container">
+
+    <div id="column">
+        <div class="column-header">
+            <img id="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
+            <h1 id="name">
+                F<span style="color: #00B050;">inde</span>
+            </h1>
+        </div>
+        <h2>
+            Guarda o publica listados de <br> productos y vendedores registrandote!
+        </h2>
+
+
+
+
+        <form method="POST" onsubmit="return checkPassword(this)">
+            {% csrf_token %}
+            <div class="column-div">
+                {{ form.username }}
+{#                {{ form.phone }}#}
+            </div>
+            <div class="column-caption">
+                <h3>
+                    Usar solo letras y numeros
+                </h3>
+                <h3>
+                    Entrada de diez digitos
+                </h3>
+            </div>
+            <div class="column-div">
+                {{ form.email }}
+            </div>
+            <div class="column-div">
+                {{ form.password1 }}
+                {{ form.password2 }}
+            </div>
+            <div id="checkbox-pswrd">
+                <input type="checkbox" id="checkbox" onclick="checkToggle()">
+                <h3>Mostrar Contraseña</h3>
+            </div>
+            <div class="column-caption" id="message" style="margin-bottom: 15px">
+                <h3>
+                    La contrasena debe contener lo siguiente:
+                    <p id="letter" class="invalid">Una letra <b>minuscula</b></p>
+                    <p id="capital" class="invalid">Una letra <b>mayuscula</b></p>
+                    <p id="number" class="invalid">Un <b>numero</b></p>
+                    <p id="length" class="invalid">Minimo <b>8 caracteres</b></p>
+                </h3>
+            </div>
+            <div class="column-footer">
+                <a class="link" href="log.html">
+                    <h4>
+                        Ya tengo cuenta
+                    </h4>
+                </a>
+                <input class="bouncy" id="subm" type="submit" value="Submit" name="submit"/>
+            </div>
+
+
+            <div id="captcha">
+                <div class="g-recaptcha brochure__form__captcha" data-sitekey="YOUR SITE KEY"></div>
+            </div>
+        </form>
+
+
+
+
+
+
+    </div>
+</div>
+
+<footer style="position: center">
+
+</footer>
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+form_fields[1].placeholder='Username..'
+form_fields[2].placeholder='Email..'
+form_fields[3].placeholder='Enter Password..'
+form_fields[4].placeholder='Re-enter Password..'
+
+for (var field in form_fields){
+    form_fields[field].className += 'form-control'
+}
+</script>
+<script type="text/javascript" src="{% static 'js/js_sign_html.js' %}"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+
+
+</body>
+</html>
