@@ -18,7 +18,7 @@
 
     <div class="top-header">
         <div id="logo-name">
-            <img class="logo" src="{% static 'imgs/img_logo' %}" alt="logo">
+            <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
 
             <h1 id="name">
                 F<span style="color: #00B050;">inde</span>
@@ -43,8 +43,8 @@
             </div>
 
             <div class="dropMenu-toggle">
-                <img id="profile-pic" src="img_goat_profile_pic.jpg">
-                <h1>{{ request.user }}</h1>
+                <img id="profile-pic" src="{% static 'imgs/img_goat_profile_pic.jpg' %}">
+{#                {{ request.user }}#}
                 <div class="toggle">
                     <div class="dropMenu">
                         <ul id="left-column">
@@ -59,14 +59,14 @@
                             <li><a href="#"><h2>Favoritos</h2></a></li>
                             <li><a href="#"><h2>Mss Listados</h2></a></li>
                             <li><a href="#"><h2>Configuracion</h2></a></li>
-                            <li><a href="home.html"><h2>Logout</h2></a></li>
+                            <li><a href="{% url 'logout' %}"><h2>Logout</h2></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
         </div>
-        <span><a href="{% url 'logout' %}">Logout</a></span>
+
     </div>
 
     <div>
@@ -90,9 +90,12 @@
 
 </main>
 
-<script type="text/javascript" src="js_home_logged.js"></script>
-<script src="source/js/maps.js" charset="UTF-8"></script>
+{% block js_block %}
 
+{#<script type="text/javascript" src="js_home_logged.js"></script>#}
+<script type="text/javascript" src="{% static 'js/js_home_logged.js' %}"></script>
+
+{% endblock %}
 
 </body>
 

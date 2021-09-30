@@ -30,10 +30,14 @@ header {
 }
 
 #column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     overflow: hidden;
     border-style: solid;
     border-color: #00afee;
     width: 500px;
+    height: 500px;
 }
 
 #logo {
@@ -52,7 +56,6 @@ h2 {
     font-family: 'Gowun Dodum', sans-serif;
     font-weight: lighter;
     font-size: 24px;
-    padding-left: 30px;
     color: #00B050;
 }
 
@@ -66,42 +69,30 @@ h3 {
 
 .column-header {
     display: flex;
-    padding-left: 30px;
-    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 .column-div {
     display: flex;
-    justify-content: space-between;
-    justify-items: center;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .column-caption {
     display: flex;
-    justify-content: space-between;
-    justify-items: center;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-#checkbox-pswrd {
-    display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    padding-left: 30px;
+    margin-bottom: 40px;
 }
 
-#checkbox {
-    margin-left: 5px;
-    margin-right: 5px;
-    display: block;
-    position: relative;
-    cursor: pointer;
+.column-caption-1 {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    margin-top: 15px;
 }
-
 
 input {
     font-size: 14px;
@@ -110,33 +101,6 @@ input {
     border-width: thin;
     border-color: gainsboro;
     border-style: double;
-}
-
-#message p {
-    padding: 0px 35px;
-    font-size: 14px;
-}
-
-/* Add a green text color and a checkmark when the requirements are right */
-.valid {
-    color: green;
-}
-
-.valid:before {
-    position: relative;
-    left: -35px;
-    content: "✔";
-}
-
-/* Add a red text color and an "x" when the requirements are wrong */
-.invalid {
-    color: red;
-}
-
-.invalid:before {
-    position: relative;
-    left: -35px;
-    content: "✖";
 }
 
 .column-footer {
@@ -176,19 +140,34 @@ input {
     }
 }
 
-#subm {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+a.button1 {
     background: #00afee;
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em #00afee;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     color: white;
-    border: none;
-    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
 }
 
+a.button1:hover {
+    color: white;
+    background-color: #00B050;
+    border-color: #00B050;
 
+}
 
 @media all and (max-width: 30em) {
-
+    a.button1 {
+        display: block;
+        margin: 0.4em auto;
+    }
 }
 
 .link {
@@ -200,8 +179,12 @@ input {
     cursor: pointer;
 }
 
-#captcha {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
+
+#subm {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    background: #00afee;
+    color: white;
+    border: none;
+    cursor: pointer;
 }

@@ -29,13 +29,11 @@
         </h2>
 
 
-
-
         <form method="POST" onsubmit="return checkPassword(this)">
             {% csrf_token %}
             <div class="column-div">
                 {{ form.username }}
-{#                {{ form.phone }}#}
+                {#                {{ form.phone }}#}
             </div>
             <div class="column-caption">
                 <h3>
@@ -66,12 +64,11 @@
                 </h3>
             </div>
             <div class="column-footer">
-                <a class="link" href="log.html">
-                    <h4>
-                        Ya tengo cuenta
-                    </h4>
+                <a class="link" href="{% url 'log' %}">
+                    <h4>I already have an account...</h4>
                 </a>
-                <input class="bouncy" id="subm" type="submit" value="Submit" name="submit"/>
+
+                <input class="bouncy" id="subm" type="submit" value="Sign in..." name="submit"/>
             </div>
 
 
@@ -79,10 +76,6 @@
                 <div class="g-recaptcha brochure__form__captcha" data-sitekey="YOUR SITE KEY"></div>
             </div>
         </form>
-
-
-
-
 
 
     </div>
@@ -94,18 +87,17 @@
 
 <script>
     var form_fields = document.getElementsByTagName('input')
-form_fields[1].placeholder='Username..'
-form_fields[2].placeholder='Email..'
-form_fields[3].placeholder='Enter Password..'
-form_fields[4].placeholder='Re-enter Password..'
+    form_fields[1].placeholder = 'Username..'
+    form_fields[2].placeholder = 'Email..'
+    form_fields[3].placeholder = 'Enter Password..'
+    form_fields[4].placeholder = 'Re-enter Password..'
 
-for (var field in form_fields){
-    form_fields[field].className += 'form-control'
-}
+    for (var field in form_fields) {
+        form_fields[field].className += 'form-control'
+    }
 </script>
 <script type="text/javascript" src="{% static 'js/js_sign_html.js' %}"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
-
 
 
 </body>
