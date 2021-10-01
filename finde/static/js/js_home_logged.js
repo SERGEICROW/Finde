@@ -10,4 +10,4 @@ tog_ntf.addEventListener("click", function () {
     this.classList.toggle("active");
 })
 
-console.log("que mierda")
+

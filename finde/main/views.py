@@ -3,9 +3,14 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 # Create your views here.
 from .forms import SignUpForm
+
+
+def test(request):
+    return render(request, "test.html", {})
 
 
 def home(request):
@@ -19,10 +24,13 @@ def signPage(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            user = form.cleaned_data.get('username')
+            user = form.cleaned_data['username']
+
+            # user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created for ' + user)
 
             return redirect('log')
+
     context = {'form': form}
 
     return render(request, 'sign.html', context)
