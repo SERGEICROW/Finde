@@ -22,7 +22,8 @@ urlpatterns = [
     path('', views.home, name="test"),
     path('sign/', views.signPage, name="sign"),
     path('log/', views.logPage, name="log"),
-    path('home_logged', views.home_logged, name="home_logged"),
-    path('logout/', views.logoutUser, name="logout")
+    path('home_logged/', views.home_logged, name="home_logged"),
+    path('logout/', views.logoutUser, name="logout"),
+    path('profile/', views.profileEdit, name="profile")
 
 ]

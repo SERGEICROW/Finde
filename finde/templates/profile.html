@@ -1,0 +1,297 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles_profile.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Profile</title>
+
+</head>
+
+<body>
+
+<div class="header">
+    <div style="display: flex">
+        <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
+        <h1 id="name">
+            F<span style="color: #00B050;">inde</span>
+        </h1>
+    </div>
+
+    <div class="profile">
+        <div class="ntfMenu-toggle">
+            <span id="notification-icon">notifications</span>
+            <div class="toggle-ntf">
+                <div class="ntf-dropMenu">
+                    <div class="ntf-content">
+                        PRUEBA DE BARRA DE NOTIFICACIONES
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropMenu-toggle">
+            <img id="profile-pic" src="{% static 'imgs/img_goat_profile_pic.jpg' %}" alt="logo">
+            <div class="toggle">
+                <div class="dropMenu">
+                    <ul id="left-column">
+                        <li><span class="material-icons l-icon">manage_accounts</span></li>
+                        <li><span class="material-icons l-icon">favorite</span></li>
+                        <li><span class="material-icons l-icon">format_list_bulleted</span></li>
+                        <li><span class="material-icons l-icon">settings</span></li>
+                        <li><span class="material-icons l-icon">logout</span></li>
+                    </ul>
+                    <ul id="right-column">
+                        <li><a href="#"><h2>Editar Perfil</h2></a></li>
+                        <li><a href="#"><h2>Favoritos</h2></a></li>
+                        <li><a href="#"><h2>Mss Listados</h2></a></li>
+                        <li><a href="#"><h2>Configuracion</h2></a></li>
+                        <li><a href="home.html"><h2>Logout</h2></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main">
+
+    <div id="left">
+        <ul class="menu">
+            <li class="menu-icons"><span class="material-icons menu-icon">manage_accounts</span>Editar perfil
+                <ul class="sub-menu">
+                    <li>Imagen de perfil</li>
+                    <li>Datos de perfil</li>
+                    <li>Datos de comercio</li>
+                </ul>
+            </li>
+            <li class="menu-icons"><span class="material-icons menu-icon">format_list_bulleted</span>Mis listados
+                <ul class="sub-menu">
+                    <li>Ver, Agregar, Eliminar Listados</li>
+
+                </ul>
+            </li>
+            <li class="menu-icons"><span class="material-icons menu-icon">settings</span>Configuracion
+                <ul class="sub-menu">
+                    <li>Cambiar contrasena</li>
+                    <li>Autenticacion de dos pasos</li>
+                    <li>Cuentas ligadas</li>
+                    <li>Eliminar cuenta</li>
+                    <li>Seguridad</li>
+                    <li>Privacidad</li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <div id="right">
+
+
+        <!--        <div id="profile-edit-main">-->
+        <!--            <div class="main-title"><h3>Editar perfil</h3></div>-->
+
+        <!--            <div class="main-container" id="edit-profile">-->
+        <!--                <div class="sub-containers" id="profile-pic">-->
+        <!--                    <h4 class="sub-titles">Imagen de Perfil</h4>-->
+        <!--                    <img id="picture" src="img_goat_profile_pic.jpg">-->
+        <!--                    <a><span class="material-icons" id="pic-icon">edit</span></a>-->
+        <!--                    <h2>Imagen de formato, .jpg, .png, maximo 800 x 800 px, no se admiten imagenes obsenas</h2>-->
+        <!--                </div>-->
+
+        <!--                <div class="sub-containers">-->
+        <!--                    <h4 class="sub-titles">Datos de perfil</h4>-->
+        <!--                    <ul class="profile-form">-->
+        <!--                        <li class="profile-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Nombre</div>-->
+        <!--                            <div class="profile-data">TEST Archie Roosvelt Churchill</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Tu nombre real no se mostrara a menos que acordes un envio</h2>-->
+        <!--                        <li class="profile-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Seudonimo</div>-->
+        <!--                            <div class="profile-data">TEST Bamba666</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Como te veran los vendedores cuando realices preguntas</h2>-->
+        <!--                        <li class="profile-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>CURP</div>-->
+        <!--                            <div class="profile-data">TEST YACAR93849SHSODWDFV</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Esto con la intencion de generar un ecosistema seguro libre de fraudes </h2>-->
+        <!--                        <li class="profile-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Telefono</div>-->
+        <!--                            <div class="profile-data">TEST 64738239348</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Telefono para ingreso a cuenta</h2>-->
+        <!--                        <li class="profile-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Correo</div>-->
+        <!--                            <div class="profile-data">TEST archiegordochogomenos</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Puedes agregar o quitar hasta dos correos mas para ingresar pero no puedes eliminar el-->
+        <!--                            primero</h2>-->
+        <!--                        <li class="profile-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Direccion de recepcion de envios-->
+        <!--                            </div>-->
+        <!--                            <div class="profile-data">TEST cerro del ambigua 23</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Solo para generar automaticamente un aproximado de costo y tiempo de envio con la-->
+        <!--                            paqueteria</h2>-->
+        <!--                    </ul>-->
+        <!--                </div>-->
+
+        <!--                <div class="sub-containers" id="commerce-data">-->
+        <!--                    <h4 class="sub-titles">Datos de comercio</h4>-->
+        <!--                    <ul class="commerce-form">-->
+        <!--                        <li class="commerce-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Nombre</div>-->
+        <!--                            <div class="commerce-data">TEST DevGame eStore</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Nombre de tienda o Alias como te veran los compradores</h2>-->
+        <!--                        <li class="commerce-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Tipo de comercio</div>-->
+        <!--                            <div class="commerce-data">TEST Fisico</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Fisico, o tienda independiente en linea</h2>-->
+
+        <!--                        <li class="commerce-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Haces envios</div>-->
+        <!--                            <div class="commerce-data">TEST Si</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Solo podras hacer envios con factura a nombre de RFC registrado y acuerdo de garantia</h2>-->
+        <!--                        <li class="commerce-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Puntos de entrega</div>-->
+        <!--                            <div class="commerce-data">TEST Metro tasquena</div>-->
+        <!--                            <div class="commerce-data">TEST Bbva ermita</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>Selecciona puntos de entrega de referencia alrededor de donde estas dispuesto a hacer-->
+        <!--                            entregas </h2>-->
+        <!--                        <li class="commerce-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Direccion</div>-->
+        <!--                            <div class="commerce-data">TEST baabababa 34 col. bababa</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>En caso de tener tienda fisica, escribe la direccion donde las personas pueden ver tus-->
+        <!--                            productos</h2>-->
+        <!--                        <li class="commerce-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Horario</div>-->
+        <!--                            <div class="commerce-data">TEST Lunes - Viernes de 1:00pm a 8:pm / Sabados de 1:00pm a-->
+        <!--                                3:00pm-->
+        <!--                            </div>-->
+        <!--                        </li>-->
+        <!--                        <h2>En caso de tener tienda fisica, marca tu horario disponible</h2>-->
+        <!--                        <li class="profile-form-li">-->
+        <!--                            <div><span class="material-icons edit-icon">edit</span>Codigo Postal</div>-->
+        <!--                            <div class="commerce-data">TEST 04230</div>-->
+        <!--                        </li>-->
+        <!--                        <h2>El codigo postal servira de punto de referencia para que los comrpadores vean que tan cerca-->
+        <!--                            estas de ellos</h2>-->
+        <!--                    </ul>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+
+        <div id="list-edit-main">
+            <div style="position: fixed; background: white; top: 73px">
+                <div class="main-title"><h3>Mis Listados</h3></div>
+                <div style="background: white; height: 115px; width: 1620px">
+                    <nav id="list-nav">
+                        <button id="filter">
+                            <span class="material-icons list-nav-icons">filter_alt</span>
+                            Filtrar
+                        </button>
+                        <div id="product-search">
+                            <span class="material-icons search-nav-icon">search</span>
+                            <input id="input-search" placeholder="Buscar por # o titulo">
+                        </div>
+                        <a href="#">
+                            <button id="publish">Publicar</button>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+            <hr style="height: 240px">
+
+
+            <div class="list">
+                <div class="list-nav">
+                    <div class="item-qty"><span>Qty. </span>2</div>
+                    <div class="list-title">Sillas de oficina</div>
+                    <span class="material-icons expand-list-icon">expand_less</span>
+                    <div class="item-id"><span>#</span>182746</div>
+                </div>
+                <div class="product">
+                    <img class="product-image" src="img_chair-1.jpg" alt="Product">
+                    <div class="vl"></div>
+                    <p class="product-title p-titles">Silla officina tipo 1</p>
+                    <div class="vl"></div>
+                    <p class="product-deliver p-titles"><span>Tipo de entrega : </span>En tienda</p>
+                    <div class="vl"></div>
+                    <p class="product-price p-titles"><span>$</span>12,000</p>
+                    <div class="vl"></div>
+                    <a><span class="material-icons edit-prod-icon">edit</span></a>
+                </div>
+                <div class="product">
+                    <img class="product-image" src="img_chair-2.jpg" alt="Product">
+                    <div class="vl"></div>
+                    <p class="product-title p-titles">Silla officina tipo 14</p>
+                    <div class="vl"></div>
+                    <p class="product-deliver p-titles"><span>Tipo de entrega : </span>En tienda con envio a domicilio
+                        gratis</p>
+                    <div class="vl"></div>
+                    <p class="product-price p-titles"><span>$</span>9,000</p>
+                    <div class="vl"></div>
+                    <a><span class="material-icons edit-prod-icon">edit</span></a>
+                </div>
+                <div class="product">
+                    <img class="product-image" src="img_chair-3.jpg" alt="Product">
+                    <div class="vl"></div>
+                    <p class="product-title p-titles">Silla officina tipo 3</p>
+                    <div class="vl"></div>
+                    <p class="product-deliver p-titles"><span>Tipo de entrega : </span>Punto Medio</p>
+                    <div class="vl"></div>
+                    <p class="product-price p-titles"><span>$</span>10,000</p>
+                    <div class="vl"></div>
+                    <a><span class="material-icons edit-prod-icon">edit</span></a>
+                </div>
+            </div>
+
+            <div class="list">
+                <div class="list-nav">
+                    <div class="item-qty"><span>Qty. </span>1</div>
+                    <div class="list-title">Audifonos</div>
+                    <span class="material-icons expand-list-icon">expand_less</span>
+                    <div class="item-id"><span>#</span>182747</div>
+                </div>
+                <div class="product">
+                    <img class="product-image" src="img_headphones.jpeg" alt="Product">
+                    <div class="vl"></div>
+                    <p class="product-title p-titles">Silla officina tipo 1</p>
+                    <div class="vl"></div>
+                    <p class="product-deliver p-titles"><span>Tipo de entrega : </span>En tienda</p>
+                    <div class="vl"></div>
+                    <p class="product-price p-titles"><span>$</span>2,000</p>
+                    <div class="vl"></div>
+                    <a><span class="material-icons edit-prod-icon">edit</span></a>
+                </div>
+            </div>
+
+            <div class="list">
+                <div class="list-nav">
+                    <div class="item-qty"><span>Qty. </span>5</div>
+                    <div class="list-title">Teclados</div>
+                    <span class="material-icons expand-list-icon">expand_more</span>
+                    <div class="item-id"><span>#</span>182749</div>
+                </div>
+            </div>
+
+
+            <hr style="height: 240px; border-style: none">
+        </div>
+    </div>
+</div>
+</body>
+</html>
