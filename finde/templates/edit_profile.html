@@ -1,0 +1,232 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <Meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles_settings.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Settings</title>
+</head>
+
+<body>
+
+<header>
+
+    <div class="top-header">
+        <div id="logo-name">
+            <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
+
+            <h1 id="name">
+                F<span style="color: #00B050;">inde</span>
+            </h1>
+        </div>
+    </div>
+
+</header>
+
+<div id="main">
+
+    <div id="left">
+        <div class="menu">
+            <a href="{% url 'edit_profile' %}">
+                <div class="titles">
+                    <span class="material-icons menu-icon">manage_accounts</span>
+                    Editar Perfil
+                </div>
+                <ul class="sub-menu">
+                    <a href="#ancher-1">
+                        <li>Imagen de perfil</li>
+                    </a>
+                    <a href="#ancher-2">
+                        <li>Datos de perfil</li>
+                    </a>
+                    <li>Datos de comercio</li>
+                </ul>
+            </a>
+            <a href="{% url 'edit_lists' %}">
+                <div class="titles">
+                    <span class="material-icons menu-icon">format_list_bulleted</span>
+                    Mis listados
+                </div>
+                <ul class="sub-menu">
+                    <li>Ver, Agregar, Eliminar Listados</li>
+                </ul>
+            </a>
+            <a>
+                <div class="titles">
+                    <span class="material-icons menu-icon">settings</span>Configuracion
+                </div>
+                <ul class="sub-menu">
+                    <li>Cambiar contrasena</li>
+                    <li>Autenticacion de dos pasos</li>
+                    <li>Cuentas ligadas</li>
+                    <li>Eliminar cuenta</li>
+                    <li>Seguridad</li>
+                    <li>Privacidad</li>
+                </ul>
+            </a>
+        </div>
+    </div>
+
+    <div id="right">
+        <div id="profile-edit-main">
+            <div class="main-title"><h3>Editar perfil</h3></div>
+
+            <div class="main-container" id="edit-profile">
+                <div id="ancher-1"></div>
+                <div class="sub-containers">
+                    <h4 class="sub-titles">Imagen de Perfil</h4>
+                    <div class="profile-pic">
+                        <img id="picture" src="{% static 'imgs/img_goat_profile_pic.jpg' %}" alt="logo">
+                        <button id="imageEdit-button"><span class="material-icons" id="pic-icon">edit</span></button>
+                        <h2>Imagen de formato, .jpg, .png, maximo 800 x 800 px, no se admiten imagenes obsenas</h2>
+                    </div>
+                </div>
+
+                <div id="ancher-2"></div>
+                <div class="sub-containers">
+                    <h4 class="sub-titles">Datos de perfil</h4>
+                    <ul class="profile-form">
+                        {% for data in data %}
+                            <li class="profile-form-li">
+                                <div>
+                                    <button><span class="material-icons edit-icon">edit</span></button>
+                                    Seudonimo
+                                </div>
+                                <div class="profile-data">{{ request.user }}</div>
+                            </li>
+                            <li class="profile-form-li">
+                                <div>
+                                    <button><span class="material-icons edit-icon">edit</span></button>
+                                    Correo
+                                </div>
+                                <div class="profile-data">{{ user.email }}</div>
+                            </li>
+                            <h2>Como te veran los vendedores cuando realices preguntas</h2>
+                            <li class="profile-form-li">
+                                <div>
+                                    <button id="curpEdit-button"><span class="material-icons edit-icon">edit</span>
+                                    </button>
+                                    CURP
+                                </div>
+                                <div class="profile-data">{{ data.curp }}</div>
+                            </li>
+                            <h2>Esto con la intencion de generar un ecosistema seguro libre de fraudes </h2>
+                            <li class="profile-form-li">
+                                <div>
+                                    <button id="phoneEdit-button"><span class="material-icons edit-icon">edit</span>
+                                    </button>
+                                    Telefono
+                                </div>
+                                <div class="profile-data">{{ data.phone }}</div>
+                            </li>
+                            <h2>Telefono para ingreso a cuenta</h2>
+                            <li class="profile-form-li">
+                                <div>
+                                    <button id="addressEdit-button"><span class="material-icons edit-icon">edit</span>
+                                    </button>
+                                    Direccion de recepcion de envios
+                                </div>
+                                <div class="profile-data">{{ data.address }}</div>
+                            </li>
+                            <h2>Solo para generar automaticamente un aproximado de costo y tiempo de envio con la
+                                paqueteria</h2>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+                <div class="sub-containers" id="commerce-data">
+                    <h4 class="sub-titles">Datos de vendedor</h4>
+                    <ul class="commerce-form">
+                        <li class="commerce-form-li">
+                            <div><span class="material-icons edit-icon">edit</span>Nombre</div>
+                            <div class="commerce-data">TEST DevGame eStore</div>
+                        </li>
+                        <h2>Nombre de tienda o Alias como te veran los compradores</h2>
+                        <li class="commerce-form-li">
+                            <div><span class="material-icons edit-icon">edit</span>Tipo de comercio</div>
+                            <div class="commerce-data">TEST Fisico</div>
+                        </li>
+                        <h2>Fisico, o tienda independiente en linea</h2>
+
+                        <li class="commerce-form-li">
+                            <div><span class="material-icons edit-icon">edit</span>Haces envios</div>
+                            <div class="commerce-data">TEST Si</div>
+                        </li>
+                        <h2>Solo podras hacer envios con factura a nombre de RFC registrado y acuerdo de garantia</h2>
+                        <li class="commerce-form-li">
+                            <div><span class="material-icons edit-icon">edit</span>Puntos de entrega</div>
+                            <div class="commerce-data">TEST Metro tasquena</div>
+                            <div class="commerce-data">TEST Bbva ermita</div>
+                        </li>
+                        <h2>Selecciona puntos de entrega de referencia alrededor de donde estas dispuesto a hacer
+                            entregas </h2>
+                        <li class="commerce-form-li">
+                            <div><span class="material-icons edit-icon">edit</span>Direccion</div>
+                            <div class="commerce-data">TEST baabababa 34 col. bababa</div>
+                        </li>
+                        <h2>En caso de tener tienda fisica, escribe la direccion donde las personas pueden ver tus
+                            productos</h2>
+                        <li class="commerce-form-li">
+                            <div><span class="material-icons edit-icon">edit</span>Horario</div>
+                            <div class="commerce-data">TEST Lunes - Viernes de 1:00pm a 8:pm / Sabados de 1:00pm a
+                                3:00pm
+                            </div>
+                        </li>
+                        <h2>En caso de tener tienda fisica, marca tu horario disponible</h2>
+                        <li class="profile-form-li">
+                            <div><span class="material-icons edit-icon">edit</span>Codigo Postal</div>
+                            <div class="commerce-data">TEST 04230</div>
+                        </li>
+                        <h2>El codigo postal servira de punto de referencia para que los comrpadores vean que tan cerca
+                            estas de ellos</h2>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{#Modals#}
+
+<div class="modal" id="pic-modal">
+    <div class="modal-content">
+        <div class="close" id="close-picModal">+</div>
+        SUBIR IMAGEN
+    </div>
+</div>
+<div class="modal" id="curp-modal">
+    <div class="modal-content">
+        <div class="close" id="close-curpModal">+</div>
+        CAMBIAR CURP
+    </div>
+</div>
+<div class="modal" id="phone-modal">
+    <div class="modal-content">
+        <div class="close" id="close-phoneModal">+</div>
+        CAMBIAR PHONE
+    </div>
+</div>
+<div class="modal" id="address-modal">
+    <div class="modal-content">
+        <div class="close" id="close-addressModal">+</div>
+        CAMBIAR ADDRESS
+    </div>
+</div>
+
+
+
+{% block js_block %}
+
+    <script type="text/javascript" src="{% static 'js/js_settings.js' %}"></script>
+
+{% endblock %}
+
+</body>
+
+</html>

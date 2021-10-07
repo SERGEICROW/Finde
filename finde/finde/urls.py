@@ -24,6 +24,6 @@ urlpatterns = [
     path('log/', views.logPage, name="log"),
     path('home_logged/', views.home_logged, name="home_logged"),
     path('logout/', views.logoutUser, name="logout"),
-    path('profile/', views.profileEdit, name="profile")
-
+    path('edit_profile/', views.editProfile, name="edit_profile"),
+    path('edit_lists/', views.editLists, name='edit_lists')
 ]

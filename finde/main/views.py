@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-from .forms import SignUpForm, UserProfileForm
+from .forms import SignUpForm
+from .models import UserProfile
 
 
 def test(request):
@@ -61,8 +61,16 @@ def home_logged(request):
 
 
 @login_required(login_url='log')
-def profileEdit(request):
-    return render(request, "profile.html", {})
+def editProfile(request):
+    data = UserProfile.objects.all()
+    context = {'data': data}
+
+    return render(request, "edit_profile.html", context)
+
+
+@login_required(login_url='log')
+def editLists(request):
+    return render(request, "edit_lists.html", {})
 
 
 def logoutUser(request):
