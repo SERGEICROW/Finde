@@ -1,0 +1,500 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: whitesmoke;
+    width: 100%;
+}
+
+/*HEADER*/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    padding-top: 10px;
+    background-color: whitesmoke;
+    border-bottom: 2px solid darkgray;
+    width: 100%;
+}
+
+.logo {
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    margin-top: 1px;
+    padding: 0 0 0 10px;
+}
+
+h1 {
+    margin-top: 10px;
+    cursor: pointer;
+    color: #00afee;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.profile {
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    margin-right: 30px;
+    margin-left: 10%;
+    justify-content: space-between;
+}
+
+#notification-icon {
+    font-family: "Material Icons", serif;
+    content: "\e7f4";
+    font-size: 30px !important;
+    color: #00B050;
+    cursor: pointer;
+}
+
+#profile-pic {
+    height: 55px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #00afee;
+}
+
+.toggle {
+    display: none;
+}
+
+.dropMenu {
+    display: flex;
+    position: absolute;
+    background: whitesmoke;
+    --height: 200px;
+    top: 90px;
+    right: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 3px grey;
+}
+
+.dropMenu:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 43px;
+    border: 10px solid;
+    border-color: transparent transparent #00afee transparent;
+}
+
+#left-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: var(--height);
+    background: #00afee;
+    width: 50px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.l-icon {
+    padding-left: 12px;
+    color: whitesmoke;
+}
+
+#right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: var(--height);
+    background: whitesmoke;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 110px;
+}
+
+h2 {
+    font-family: 'Jost', sans-serif;
+    font-size: 17px;
+    color: gray;
+    cursor: pointer;
+}
+
+h2:hover {
+    color: #00afee;
+    cursor: pointer;
+}
+
+.dropMenu-toggle.active .toggle {
+    display: flex;
+}
+
+/* NOTIFICATION BAR STYLES */
+
+.ntf-dropMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: whitesmoke;
+    height: 200px;
+    top: 90px;
+    right: 70px;
+    border-radius: 15px;
+    box-shadow: 0 0 3px grey;
+    width: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+.ntf-dropMenu:before {
+    content: "";
+    position: fixed;
+    right: 114px;
+    top: 70px;
+    border: 10px solid;
+    border-color: transparent transparent #00B050 transparent;
+}
+
+.ntf-content {
+    display: flex;
+    color: gray;
+    border-bottom: #00B050;
+    border-bottom-width: thin;
+}
+
+.toggle-ntf {
+    display: none;
+}
+
+.ntfMenu-toggle.active .toggle-ntf {
+    display: flex;
+}
+
+/*PUBLISH STYLES*/
+
+h3 {
+    margin-top: 10px;
+    font-size: 33px;
+    cursor: pointer;
+    color: #00B050;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    margin-top: 76px;
+    width: 50%;
+    background: whitesmoke;
+}
+
+#pub-form {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.p-cont {
+    box-shadow: 2px 2px lightgrey;
+    padding: 10px 20px 20px;
+    margin-bottom: 25px;
+    background: white;
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+label {
+    font-family: 'Jost', sans-serif;
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: dimgrey;
+}
+
+/*input boxes*/
+
+input {
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    padding: 3px;
+    width: 300px;
+}
+input:focus {
+    outline: none !important;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-bottom-color: #00afee;
+}
+
+.inp-title {
+    width: 600px;
+    border-bottom-style: solid;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-width: 2px;
+}
+
+.inp-price {
+    width: 300px;
+    border-bottom-style: solid;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-width: 2px;
+}
+
+.bouncy {
+
+    background: #00afee;
+    border-radius: 15px;
+    border-style: none;
+    color: white;
+    animation: bouncy 5s infinite linear;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.bouncy:hover {
+    background: white;
+    color: #00B050;
+    border-style: solid;
+    border-color: #00B050;
+}
+
+@keyframes bouncy {
+    0% {
+        top: 0em
+    }
+    40% {
+        top: 0em
+    }
+    43% {
+        top: -0.9em
+    }
+    46% {
+        top: 0em
+    }
+    48% {
+        top: -0.4em
+    }
+    50% {
+        top: 0em
+    }
+    100% {
+        top: 0em;
+    }
+}
+
+/*sub containers*/
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-button {
+
+    border-style: solid;
+    border-radius: 10px;
+    width: 400px;
+    margin-left: 25%;
+    background: white;
+    border-color: #00afee;
+    color: #00afee;
+    margin-top: 10px;
+
+}
+.list-button:hover{
+    cursor: pointer;
+    background: #00B050;
+    border-color: white;
+    color: white;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+}
+
+.condition {
+    display: flex;
+    flex-direction: column;
+}
+
+select {
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: dimgrey;
+    background: white;
+    outline: none;
+}
+
+.photo-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#file-upload {
+    width: 500px;
+    height: 100px;
+    border-style: dashed;
+    border-color: darkgrey;
+}
+
+.deliver {
+    display: flex;
+    flex-direction: column;
+}
+
+.pay {
+    display: flex;
+    flex-direction: column;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    resize:none;
+    padding: 5px;
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    border-radius: 0;
+    border: 2px none dimgrey;
+    border-bottom-style: solid;
+
+}
+
+textarea:focus {
+    outline: none;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 2px solid #00afee;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+}
+
+/*saved list styles => profile.hmtl/css*/
+
+.check-list {
+    margin-right: 10px;
+}
+
+.saved-list {
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+}
+.saved-list:hover {
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00afee;
+}
+
+.list-nav {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    padding-left: 10px;
+    margin: 5px;
+}
+
+.item-qty {
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    color: dimgrey;
+}
+
+.list-title {
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 32px;
+    color: #00afee;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.item-id {
+    font-family: 'Jost', sans-serif;
+    color: dimgrey;
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

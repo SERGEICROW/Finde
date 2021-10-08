@@ -44,7 +44,7 @@
 
             <div class="dropMenu-toggle">
                 <img id="profile-pic" src="{% static 'imgs/img_goat_profile_pic.jpg' %}">
-{#                {{ request.user }}#}
+                {{ request.user }}
                 <div class="toggle">
                     <div class="dropMenu">
                         <ul id="left-column">
@@ -55,7 +55,7 @@
                             <li><span class="material-icons l-icon">logout</span></li>
                         </ul>
                         <ul id="right-column">
-                            <li><a href="#"><h2>Editar Perfil</h2></a></li>
+                            <li><a href="{% url 'edit_profile' %}"><h2>Editar Perfil</h2></a></li>
                             <li><a href="#"><h2>Favoritos</h2></a></li>
                             <li><a href="#"><h2>Mss Listados</h2></a></li>
                             <li><a href="#"><h2>Configuracion</h2></a></li>

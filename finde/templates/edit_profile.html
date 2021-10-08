@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -17,13 +18,16 @@
 <header>
 
     <div class="top-header">
-        <div id="logo-name">
-            <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
+        <a href="{% url 'home_logged' %}">
+            <div id="logo-name">
+                <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
 
-            <h1 id="name">
-                F<span style="color: #00B050;">inde</span>
-            </h1>
-        </div>
+                <h1 id="name">
+                    F<span style="color: #00B050;">inde</span>
+                </h1>
+            </div>
+        </a>
+        {{ request.user }}
     </div>
 
 </header>
@@ -44,7 +48,9 @@
                     <a href="#ancher-2">
                         <li>Datos de perfil</li>
                     </a>
-                    <li>Datos de comercio</li>
+                    <a href="#ancher-3">
+                        <li>Datos de vendedor</li>
+                    </a>
                 </ul>
             </a>
             <a href="{% url 'edit_lists' %}">
@@ -90,23 +96,26 @@
                 <div id="ancher-2"></div>
                 <div class="sub-containers">
                     <h4 class="sub-titles">Datos de perfil</h4>
+                    <h2>Estos son los datos personales de tu cuenta de usuario, para vender debes registrarte en
+                        <a href="#ancher-3" style="color: #00afee">Datos de vendedor</a></h2>
                     <ul class="profile-form">
                         {% for data in data %}
                             <li class="profile-form-li">
-                                <div>
-                                    <button><span class="material-icons edit-icon">edit</span></button>
-                                    Seudonimo
+                                <div style="color: #00B050">
+                                    {#                                    <button><span class="material-icons edit-icon">edit</span></button>#}
+                                    <span class="material-icons">person</span>
+                                    Usuario
                                 </div>
                                 <div class="profile-data">{{ request.user }}</div>
                             </li>
                             <li class="profile-form-li">
-                                <div>
-                                    <button><span class="material-icons edit-icon">edit</span></button>
+                                <div style="color: #00B050">
+                                    {#                                    <button><span class="material-icons edit-icon">edit</span></button>#}
+                                    <span class="material-icons">alternate_email</span>
                                     Correo
                                 </div>
                                 <div class="profile-data">{{ user.email }}</div>
                             </li>
-                            <h2>Como te veran los vendedores cuando realices preguntas</h2>
                             <li class="profile-form-li">
                                 <div>
                                     <button id="curpEdit-button"><span class="material-icons edit-icon">edit</span>
@@ -137,50 +146,44 @@
                                 paqueteria</h2>
                         {% endfor %}
                     </ul>
-
                 </div>
 
+                <div id="ancher-3"></div>
                 <div class="sub-containers" id="commerce-data">
                     <h4 class="sub-titles">Datos de vendedor</h4>
+                    <h2> * Obligatorio para publicar!</h2>
                     <ul class="commerce-form">
                         <li class="commerce-form-li">
-                            <div><span class="material-icons edit-icon">edit</span>Nombre</div>
+                            <div><span class="material-icons edit-icon">edit</span>*Nombre</div>
                             <div class="commerce-data">TEST DevGame eStore</div>
                         </li>
                         <h2>Nombre de tienda o Alias como te veran los compradores</h2>
                         <li class="commerce-form-li">
-                            <div><span class="material-icons edit-icon">edit</span>Tipo de comercio</div>
+                            <div><span class="material-icons edit-icon">edit</span>*Tipo de comercio</div>
                             <div class="commerce-data">TEST Fisico</div>
                         </li>
                         <h2>Fisico, o tienda independiente en linea</h2>
 
                         <li class="commerce-form-li">
-                            <div><span class="material-icons edit-icon">edit</span>Haces envios</div>
+                            <div><span class="material-icons edit-icon">edit</span>*Haces envios</div>
                             <div class="commerce-data">TEST Si</div>
                         </li>
                         <h2>Solo podras hacer envios con factura a nombre de RFC registrado y acuerdo de garantia</h2>
                         <li class="commerce-form-li">
-                            <div><span class="material-icons edit-icon">edit</span>Puntos de entrega</div>
-                            <div class="commerce-data">TEST Metro tasquena</div>
-                            <div class="commerce-data">TEST Bbva ermita</div>
-                        </li>
-                        <h2>Selecciona puntos de entrega de referencia alrededor de donde estas dispuesto a hacer
-                            entregas </h2>
-                        <li class="commerce-form-li">
-                            <div><span class="material-icons edit-icon">edit</span>Direccion</div>
+                            <div><span class="material-icons edit-icon">edit</span>Direccion de tienda fisica</div>
                             <div class="commerce-data">TEST baabababa 34 col. bababa</div>
                         </li>
                         <h2>En caso de tener tienda fisica, escribe la direccion donde las personas pueden ver tus
                             productos</h2>
-                        <li class="commerce-form-li">
-                            <div><span class="material-icons edit-icon">edit</span>Horario</div>
-                            <div class="commerce-data">TEST Lunes - Viernes de 1:00pm a 8:pm / Sabados de 1:00pm a
-                                3:00pm
-                            </div>
-                        </li>
-                        <h2>En caso de tener tienda fisica, marca tu horario disponible</h2>
+                        {#                        <li class="commerce-form-li">#}
+                        {#                            <div><span class="material-icons edit-icon">edit</span>Horario</div>#}
+                        {#                            <div class="commerce-data">TEST Lunes - Viernes de 1:00pm a 8:pm / Sabados de 1:00pm a#}
+                        {#                                3:00pm#}
+                        {#                            </div>#}
+                        {#                        </li>#}
+                        {#                        <h2>En caso de tener tienda fisica, marca tu horario disponible</h2>#}
                         <li class="profile-form-li">
-                            <div><span class="material-icons edit-icon">edit</span>Codigo Postal</div>
+                            <div><span class="material-icons edit-icon">edit</span>*Codigo Postal</div>
                             <div class="commerce-data">TEST 04230</div>
                         </li>
                         <h2>El codigo postal servira de punto de referencia para que los comrpadores vean que tan cerca
@@ -200,26 +203,39 @@
         SUBIR IMAGEN
     </div>
 </div>
+
 <div class="modal" id="curp-modal">
     <div class="modal-content">
         <div class="close" id="close-curpModal">+</div>
-        CAMBIAR CURP
+        <form method="POST" id="Update Curp">
+            {% csrf_token %}
+            {{ curpForm.curp }}
+            <input type="submit" value="Update Curp" name="form_type">
+        </form>
     </div>
 </div>
+
 <div class="modal" id="phone-modal">
     <div class="modal-content">
         <div class="close" id="close-phoneModal">+</div>
-        CAMBIAR PHONE
+        <form method="POST" id="Update Phone">
+            {% csrf_token %}
+            {{ phoneForm.phone }}
+            <input type="submit" value="Update Phone" name="form_type">
+        </form>
     </div>
 </div>
+
 <div class="modal" id="address-modal">
     <div class="modal-content">
         <div class="close" id="close-addressModal">+</div>
-        CAMBIAR ADDRESS
+        <form method="POST" id="Update Address">
+            {% csrf_token %}
+            {{ bAddressForm.address }}
+            <input type="submit" value="Update Address" name="form_type">
+        </form>
     </div>
 </div>
-
-
 
 {% block js_block %}
 

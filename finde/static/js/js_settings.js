@@ -1,4 +1,4 @@
-//OPEN MODALS
+//OPEN MODALS DATOS DE PERFIL
 document.getElementById('imageEdit-button').addEventListener('click',
     function (){
     document.querySelector('#pic-modal').style.display = 'flex';
@@ -20,7 +20,7 @@ document.getElementById('addressEdit-button').addEventListener('click',
     });
 
 
-// CLOSE MODALS
+// CLOSE MODALS DATOS DE PERFIL
 document.querySelector('#close-picModal').addEventListener('click',
     function (){
     document.querySelector('#pic-modal').style.display = 'none';
@@ -41,3 +41,6 @@ document.querySelector('#close-addressModal').addEventListener('click',
     document.querySelector('#address-modal').style.display = 'none';
     })
 
+//OPEN MODALS DATOS DE VENDEDOR
+
+// CLOSE MODALS DATOS DE VENDEDOR
