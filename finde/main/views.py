@@ -4,8 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-from .forms import SignUpForm, CurpUpdate, PhoneUpdate, BAddressUpdate
-from .models import UserProfile
+from .forms import SignUpForm, CurpUpdate, PhoneUpdate, BAddressUpdate, CreateList
+from .models import UserProfile, List, Product
 
 
 def home(request):
@@ -56,7 +56,7 @@ def home_logged(request):
 
 @login_required(login_url='log')
 def editProfile(request):
-    data = UserProfile.objects.filter(user = request.user)
+    data = UserProfile.objects.filter(user=request.user)
     curpForm = CurpUpdate()
     phoneForm = PhoneUpdate()
     bAddressForm = BAddressUpdate()
@@ -101,6 +101,26 @@ def editLists(request):
 @login_required(login_url='log')
 def publish(request):
     return render(request, "publish.html", {})
+
+
+@login_required(login_url='log')
+def test(request):
+    dataList = List.objects.filter(user=request.user)
+    form = CreateList()
+
+    if request.method == 'POST':
+        form = CreateList(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('test')
+
+    context = {
+        'list': dataList,
+        'form': form,
+    }
+    return render(request, "test.html", context)
 
 
 def logoutUser(request):

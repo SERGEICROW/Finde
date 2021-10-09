@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,20 @@
     <title>Title</title>
 </head>
 <body>
+<h1>Test</h1>
+{% block content %}
+    {% for i in list %}
+
+        <button>{{ i.title }}</button>
+        {{ data }}
+
+    {% endfor %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.title }}
+        <input type="submit" value="CREAR LISTA">
+    </form>
+{% endblock content %}
 
 </body>
 </html>
