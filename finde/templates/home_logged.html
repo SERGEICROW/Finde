@@ -9,7 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles_home_logged.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Home</title>
+    <title>Home logged</title>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            const uluru = {lat: -25.344, lng: 131.036};
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -84,16 +101,18 @@
 </header>
 
 
-<main style="background-color: black; height: 100%">
+<div id="map"></div>
 
-    <div style="background-color: white; height: 1000px"></div>
 
-</main>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg2KiBdjUjWwkODdQEWmlOdJAo5mzpNOE&callback=initMap&libraries=&v=weekly"
+        async
+></script>
 
 {% block js_block %}
 
-{#<script type="text/javascript" src="js_home_logged.js"></script>#}
-<script type="text/javascript" src="{% static 'js/js_home_logged.js' %}"></script>
+    <script type="text/javascript" src="js_home_logged.js"></script>
+    <script type="text/javascript" src="{% static 'js/js_home_logged.js' %}"></script>
 
 {% endblock %}
 

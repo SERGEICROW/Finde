@@ -7,6 +7,9 @@
 
 body {
     margin: 0;
+    align-items: center;
+    background: dodgerblue;
+    width: 100%;
 }
 
 main {
@@ -29,17 +32,18 @@ main {
 }
 
 header {
+    z-index: 9;
     position: fixed;
     background-color: whitesmoke;
     border-bottom: 2px solid darkgray;
     width: 100%;
+
 }
 
 .top-header {
     display: flex;
     justify-content: space-between;
-    margin: 10px;
-    margin-bottom: 5px;
+    margin: 10px 10px 5px;
 }
 
 
@@ -227,17 +231,13 @@ li {
     margin-left: 5%;
 }
 
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+/*MAPS*/
+
 #map {
-    height: 100%;
-}
 
-/* Optional: Makes the sample page fill the window. */
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    /*padding-top: 100px;*/
+    height: 100vh;
+  /* The height is 400 pixels */
+    width: 100%;
+  /* The width is the width of the web page */
 }
-

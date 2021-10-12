@@ -11,6 +11,23 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <title>Home</title>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            const uluru = {lat: -25.344, lng: 131.036};
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -59,14 +76,12 @@
 
 </header>
 
-<main style="background-color: black; height: 100%" >
 
-    <div style="background-color: white; height: 1000px"></div>
+<div id="map"></div>
 
-</main>
 
 <script
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg2KiBdjUjWwkODdQEWmlOdJAo5mzpNOE&callback=initMap&libraries=&v=weekly"
         async
 ></script>
 

@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
-from .forms import SignUpForm, CurpUpdate, PhoneUpdate, BAddressUpdate, CreateList
-from .models import UserProfile, List, Product
+
+from .forms import SignUpForm, CurpUpdate, PhoneUpdate, BAddressUpdate, NewList, NewProduct
+from .models import UserProfile, List
 
 
 def home(request):
@@ -105,21 +107,25 @@ def publish(request):
 
 @login_required(login_url='log')
 def test(request):
-    dataList = List.objects.filter(user=request.user)
-    form = CreateList()
+    data = List.objects.filter(user=request.user)
 
-    if request.method == 'POST':
-        form = CreateList(request.POST)
+    listForm = NewList(request.POST)
+    productForm = NewProduct(request.POST)
 
-        if form.is_valid():
-            form.save()
+    if listForm.is_valid():
+        l = listForm.save(commit=False)
+        l.user = request.user
+        l.save()
 
-            return redirect('test')
+
+
 
     context = {
-        'list': dataList,
-        'form': form,
+        'data': data,
+        'listForm': listForm,
+        'productForm': productForm
     }
+
     return render(request, "test.html", context)
 
 

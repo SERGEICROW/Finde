@@ -64,22 +64,23 @@
     <form id="pub-form">
 
         <div class="list p-cont">
-            <h3>Listado</h3>
-            <label>Selecciona uno de los listados que ya creaste para agregar tu producto, en caso de no tener ninguno
-                crea un listado nuevo</label>
-
+            <h3>Lists</h3>
+{#            <label>Selecciona uno de los listados que ya creaste para agregar tu producto, #}
+{#                en cso de no tener ninguno crea un listado nuevo</label>#}
+            <label>Select one of the lists that you already created to add your product,
+                in case you don't have any create a new one</label>
             <div class="saved-list">
                 <div class="list-nav">
                     <span style="color: #00B050" class="material-icons check-list">check</span>
                     <div class="item-qty"><span>Qty. </span>5</div>
-                    <div class="list-title">Teclados</div>
+                    <div class="list-title">Keyboards</div>
                     <div class="item-id"><span>#</span>182749</div>
                 </div>
             </div>
             <div class="saved-list">
                 <div class="list-nav">
                     <div class="item-qty"><span>Qty. </span>3</div>
-                    <div class="list-title">Sillas</div>
+                    <div class="list-title">Office Chars</div>
                     <div class="item-id"><span>#</span>182760</div>
                 </div>
             </div>
@@ -88,58 +89,59 @@
         </div>
 
         <div class="title p-cont">
-            <h3>Titulo</h3>
-            <label>Incluye solo producto, marca, modelo y características principales.</label>
-            <input type="text" class="inp-title" maxlength="50" placeholder="Ej. Silla de oficina Herman Miller">
+            <h3>Product Title</h3>
+{#            <label>Incluye solo producto, marca, modelo y características principales.</label>#}
+            <label>Include only product, brand, model or main features</label>
+            <input type="text" class="inp-title" maxlength="50" placeholder="Example. Herman Miller Office Chair">
         </div>
 
 
-        <div class="condition p-cont">
-            <h3>Condicion</h3>
-            <label>Incluye solo producto, marca, modelo y características principales. T</label>
-            <label for="con-id"></label>
-            <select name="condition" id="con-id">
-                <option value="New">Nuevo</option>
-                <option value="Used">Usado</option>
-                <option value="Reacon">Reacondicionado</option>
-            </select>
-        </div>
-
-        <div class="photo p-cont">
-            <h3>PHOTO</h3>
-            <div class="photo-file">
-                <input type="file" id="file-upload" accept="image/"/>
-            </div>
-        </div>
-
-        <div class="deliver p-cont">
-            <h3>DELIVER</h3>
-            <label>Decide la manera en la que el comprador puede obtener el producto</label>
-            <label for="del"></label>
-            <select name="deliver" id="del">
-                <option value="store">En tienda</option>
-                <option value="store-ship">En tienda con envio a domicilio</option>
-                <option value="mid-point">En persona, a acordar lugar</option>
-            </select>
-        </div>
-
-        <div class="pay p-cont">
-            <h3>PAY</h3>
-            <label>Que tipo de pagos aceptas</label>
-            <label for="pur"></label>
-            <select name="pay" id="pur">
-                <option value="store">Solo efectivo</option>
-                <option value="store-ship">Tarjeta bancaria</option>
-
-                <option value="store-ship">Tarjeta bancaria con pago a meses</option>
-                <option value="store-ship">Tarjeta bancaria con pago a meses sin intereses</option>
-                <option value="mid-point">En persona, a acordar lugar</option>
-            </select>
-        </div>
+{#        <div class="condition p-cont">#}
+{#            <h3>Condicion</h3>#}
+{#            <label>Incluye solo producto, marca, modelo y características principales. T</label>#}
+{#            <label for="con-id"></label>#}
+{#            <select name="condition" id="con-id">#}
+{#                <option value="New">Nuevo</option>#}
+{#                <option value="Used">Usado</option>#}
+{#                <option value="Reacon">Reacondicionado</option>#}
+{#            </select>#}
+{#        </div>#}
+{##}
+{#        <div class="photo p-cont">#}
+{#            <h3>PHOTO</h3>#}
+{#            <div class="photo-file">#}
+{#                <input type="file" id="file-upload" accept="image/"/>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="deliver p-cont">#}
+{#            <h3>DELIVER</h3>#}
+{#            <label>Decide la manera en la que el comprador puede obtener el producto</label>#}
+{#            <label for="del"></label>#}
+{#            <select name="deliver" id="del">#}
+{#                <option value="store">En tienda</option>#}
+{#                <option value="store-ship">En tienda con envio a domicilio</option>#}
+{#                <option value="mid-point">En persona, a acordar lugar</option>#}
+{#            </select>#}
+{#        </div>#}
+{##}
+{#        <div class="pay p-cont">#}
+{#            <h3>PAY</h3>#}
+{#            <label>Que tipo de pagos aceptas</label>#}
+{#            <label for="pur"></label>#}
+{#            <select name="pay" id="pur">#}
+{#                <option value="store">Solo efectivo</option>#}
+{#                <option value="store-ship">Tarjeta bancaria</option>#}
+{##}
+{#                <option value="store-ship">Tarjeta bancaria con pago a meses</option>#}
+{#                <option value="store-ship">Tarjeta bancaria con pago a meses sin intereses</option>#}
+{#                <option value="mid-point">En persona, a acordar lugar</option>#}
+{#            </select>#}
+{#        </div>#}
 
         <div class="description p-cont">
             <h3>DESCRIPTION</h3>
-            <label>Una breve descripcion sobre las caracteristicas del producto</label>
+            <label>A small description about the main features of the product</label>
             <textarea rows="10" cols="50" name="description-box" form="pub-form"
                       placeholder="Agrega una descripcion..."></textarea>
         </div>

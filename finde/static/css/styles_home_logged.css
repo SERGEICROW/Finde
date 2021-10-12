@@ -9,6 +9,9 @@
 
 body {
     margin: 0;
+    align-items: center;
+    background: dodgerblue;
+    width: 100%;
 }
 
 main {
@@ -25,6 +28,7 @@ main {
 }
 
 header {
+    z-index: 9;
     position: fixed;
     background-color: whitesmoke;
     border-bottom: 2px solid darkgray;
@@ -299,5 +303,14 @@ h2:hover {
     display: flex;
 }
 
+/*MAPS*/
 
+#map {
+
+    /*padding-top: 100px;*/
+    height: 100vh;
+  /* The height is 400 pixels */
+    width: 100%;
+  /* The width is the width of the web page */
+}
 
