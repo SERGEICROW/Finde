@@ -1,3 +1,6 @@
+import base64
+import platform
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -6,8 +9,8 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-from .forms import SignUpForm, CurpUpdate, PhoneUpdate, BAddressUpdate, NewList, NewProduct
-from .models import UserProfile, List
+from .forms import SignUpForm, CurpUpdate, PhoneUpdate, BAddressUpdate, NewProduct
+from .models import UserProfile, Product
 
 
 def home(request):
@@ -97,38 +100,56 @@ def editProfile(request):
 
 @login_required(login_url='log')
 def editLists(request):
-    return render(request, "edit_lists.html", {})
+    productData = Product.objects.filter(user=request.user)
+
+    context = {
+        'productData': productData
+    }
+
+    return render(request, "edit_lists.html", context)
 
 
 @login_required(login_url='log')
 def publish(request):
-    return render(request, "publish.html", {})
+    # productForm = NewProduct(request.POST,)
+    #
+    # if productForm.is_valid():
+    #     p = productForm.save(commit=False)
+    #     p.user = (request.user)
+    #     p.save()
+    #     messages.success(request, 'Product added')
+    #     return redirect('edit_lists')
+    # else:
+    #     print('error')
+
+    if request.method == 'POST':
+        productForm = NewProduct(request.POST, request.FILES)
+        if productForm.is_valid():
+            p = productForm.save(commit=False)
+            p.user = (request.user)
+            p.save()
+            return redirect('edit_lists')
+    else:
+        productForm = NewProduct()
+
+    context = {
+        'productForm': productForm
+    }
+
+    return render(request, "publish.html", context)
 
 
 @login_required(login_url='log')
 def test(request):
-    data = List.objects.filter(user=request.user)
-
-    listForm = NewList(request.POST)
-    productForm = NewProduct(request.POST)
-
-    if listForm.is_valid():
-        l = listForm.save(commit=False)
-        l.user = request.user
-        l.save()
-
-
-
+    productData = Product.objects.filter(user=request.user)
 
     context = {
-        'data': data,
-        'listForm': listForm,
-        'productForm': productForm
+        'productData': productData
     }
-
     return render(request, "test.html", context)
 
 
 def logoutUser(request):
     logout(request)
     return redirect('log')
+

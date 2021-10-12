@@ -17,13 +17,16 @@
 <header>
 
     <div class="top-header">
-        <div id="logo-name">
-            <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
+        <a href="{% url 'home_logged' %}">
+            <div id="logo-name">
+                <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
 
-            <h1 id="name">
-                F<span style="color: #00B050;">inde</span>
-            </h1>
-        </div>
+                <h1 id="name">
+                    F<span style="color: #00B050;">inde</span>
+                </h1>
+            </div>
+        </a>
+        {{ request.user }}
     </div>
 
 </header>
@@ -74,18 +77,18 @@
 
         <div id="list-edit-main">
             <div style="position: fixed; background: white; top: 73px">
-                <div class="main-title"><h3>Mis Listados</h3></div>
+                <div class="main-title"><h3>My products</h3></div>
                 <div style="background: white; height: 115px; width: 1620px">
                     <nav id="list-nav">
                         <button id="filter">
                             <span class="material-icons list-nav-icons">filter_alt</span>
-                            Filtrar
+                            Filter
                         </button>
                         <div id="product-search">
                             <span class="material-icons search-nav-icon">search</span>
-                            <input id="input-search" placeholder="Buscar por # o titulo">
+                            <input id="input-search" placeholder="Search product">
                         </div>
-                        <a href="#">
+                        <a href="{% url 'publish' %}">
                             <button id="publish">Publicar</button>
                         </a>
                     </nav>
@@ -93,78 +96,24 @@
             </div>
             <hr style="height: 240px">
 
-
-            <div class="list">
-                <div class="list-nav">
-                    <div class="item-qty"><span>Qty. </span>2</div>
-                    <div class="list-title">Sillas de oficina</div>
-                    <span class="material-icons expand-list-icon">expand_less</span>
-                    <div class="item-id"><span>#</span>182746</div>
+            {% for i in productData %}
+                <div class="list">
+                    <div class="product">
+                        {% if i.image %}
+                            <img class="product-image" src="{{ i.image.url }}" alt="No image uploaded">
+                        {% endif %}
+                        <div class="vl"></div>
+                        <p class="product-title p-titles">{{ i.title }}</p>
+                        <div class="vl"></div>
+                        <p class="product-deliver p-titles">{{ i.description }}</p>
+                        <div class="vl"></div>
+                        <p class="product-price p-titles"><span>$</span>{{ i.price }}</p>
+                        <div class="vl"></div>
+                        <a><span class="material-icons edit-prod-icon">edit</span></a>
+                    </div>
                 </div>
-                <div class="product">
-                    <img class="product-image" src="img_chair-1.jpg" alt="Product">
-                    <div class="vl"></div>
-                    <p class="product-title p-titles">Silla officina tipo 1</p>
-                    <div class="vl"></div>
-                    <p class="product-deliver p-titles"><span>Tipo de entrega : </span>En tienda</p>
-                    <div class="vl"></div>
-                    <p class="product-price p-titles"><span>$</span>12,000</p>
-                    <div class="vl"></div>
-                    <a><span class="material-icons edit-prod-icon">edit</span></a>
-                </div>
-                <div class="product">
-                    <img class="product-image" src="img_chair-2.jpg" alt="Product">
-                    <div class="vl"></div>
-                    <p class="product-title p-titles">Silla officina tipo 14</p>
-                    <div class="vl"></div>
-                    <p class="product-deliver p-titles"><span>Tipo de entrega : </span>En tienda con envio a domicilio
-                        gratis</p>
-                    <div class="vl"></div>
-                    <p class="product-price p-titles"><span>$</span>9,000</p>
-                    <div class="vl"></div>
-                    <a><span class="material-icons edit-prod-icon">edit</span></a>
-                </div>
-                <div class="product">
-                    <img class="product-image" src="img_chair-3.jpg" alt="Product">
-                    <div class="vl"></div>
-                    <p class="product-title p-titles">Silla officina tipo 3</p>
-                    <div class="vl"></div>
-                    <p class="product-deliver p-titles"><span>Tipo de entrega : </span>Punto Medio</p>
-                    <div class="vl"></div>
-                    <p class="product-price p-titles"><span>$</span>10,000</p>
-                    <div class="vl"></div>
-                    <a><span class="material-icons edit-prod-icon">edit</span></a>
-                </div>
-            </div>
-
-            <div class="list">
-                <div class="list-nav">
-                    <div class="item-qty"><span>Qty. </span>1</div>
-                    <div class="list-title">Audifonos</div>
-                    <span class="material-icons expand-list-icon">expand_less</span>
-                    <div class="item-id"><span>#</span>182747</div>
-                </div>
-                <div class="product">
-                    <img class="product-image" src="img_headphones.jpeg" alt="Product">
-                    <div class="vl"></div>
-                    <p class="product-title p-titles">Silla officina tipo 1</p>
-                    <div class="vl"></div>
-                    <p class="product-deliver p-titles"><span>Tipo de entrega : </span>En tienda</p>
-                    <div class="vl"></div>
-                    <p class="product-price p-titles"><span>$</span>2,000</p>
-                    <div class="vl"></div>
-                    <a><span class="material-icons edit-prod-icon">edit</span></a>
-                </div>
-            </div>
-
-            <div class="list">
-                <div class="list-nav">
-                    <div class="item-qty"><span>Qty. </span>5</div>
-                    <div class="list-title">Teclados</div>
-                    <span class="material-icons expand-list-icon">expand_more</span>
-                    <div class="item-id"><span>#</span>182749</div>
-                </div>
-            </div>
+                {{ productData.title }}
+            {% endfor %}
 
 
             <hr style="height: 240px; border-style: none">

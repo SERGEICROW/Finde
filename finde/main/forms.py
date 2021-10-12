@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 # Hereda de UserCreationForm par agregar valores
-from .models import UserProfile, List, Product
+from .models import UserProfile, Product
 
 
 class SignUpForm(UserCreationForm):
@@ -30,13 +30,13 @@ class BAddressUpdate(ModelForm):
         fields = ['address']
 
 
-class NewList(ModelForm):
-    class Meta:
-        model = List
-        fields = ['title']
+# class NewList(ModelForm):
+#     class Meta:
+#         model = List
+#         fields = ['title']
 
 
 class NewProduct(ModelForm):
     class Meta:
         model = Product
-        fields = ['list', 'title', 'description', 'price']
+        fields = ['image', 'title', 'description', 'price']

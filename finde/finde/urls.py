@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.template.context_processors import static
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
 from main import views
 
 urlpatterns = [
@@ -30,5 +34,5 @@ urlpatterns = [
     path('publish/', views.publish, name="publish"),
     path('test/', views.test, name="test")
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/styles_publish.css">
+    <link rel="stylesheet" href="{% static 'css/styles_publish.css' %}" >
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Publish</title>
 
@@ -15,12 +15,14 @@
 <body>
 
 <div class="header">
-    <div style="display: flex">
-        <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
-        <h1 id="name">
-            F<span style="color: #00B050;">inde</span>
-        </h1>
-    </div>
+    <a href="{% url 'home_logged' %}">
+        <div style="display: flex">
+            <img class="logo" src="{% static 'imgs/img_logo.png' %}" alt="logo">
+            <h1 id="name">
+                F<span style="color: #00B050;">inde</span>
+            </h1>
+        </div>
+    </a>
 
     <div class="profile">
         <div class="ntfMenu-toggle">
@@ -34,8 +36,9 @@
             </div>
         </div>
 
+
         <div class="dropMenu-toggle">
-            <img id="profile-pic" src="{% static 'imgs/img_goat_profile_pic.jpg' %}" alt="profile pic">
+            <img id="profile-pic" src="{% static 'imgs/profile_pic.png' %}" alt="profile pic">
             <div class="toggle">
                 <div class="dropMenu">
                     <ul id="left-column">
@@ -61,104 +64,108 @@
 
 <main>
 
-    <form id="pub-form">
+    <div id="pub-form">
 
-        <div class="list p-cont">
-            <h3>Lists</h3>
-{#            <label>Selecciona uno de los listados que ya creaste para agregar tu producto, #}
-{#                en cso de no tener ninguno crea un listado nuevo</label>#}
-            <label>Select one of the lists that you already created to add your product,
-                in case you don't have any create a new one</label>
-            <div class="saved-list">
-                <div class="list-nav">
-                    <span style="color: #00B050" class="material-icons check-list">check</span>
-                    <div class="item-qty"><span>Qty. </span>5</div>
-                    <div class="list-title">Keyboards</div>
-                    <div class="item-id"><span>#</span>182749</div>
-                </div>
+        {#            <div class="list p-cont">#}
+        {#                <h3>Lists</h3>#}
+        {#            <label>Selecciona uno de los listados que ya creaste para agregar tu producto, #}
+        {#                en cso de no tener ninguno crea un listado nuevo</label>#}
+        {#                <label>Select one of the lists that you already created to add your product,#}
+        {#                    in case you don't have any create a new one</label>#}
+        {#                {% for i in data %}#}
+        {#                    <div class="saved-list">#}
+        {#                        <div class="list-nav">#}
+        {#                            <span style="color: #00B050" class="material-icons check-list">check</span>#}
+        {#                            <div class="item-qty"><span>Qty. </span>5</div>#}
+        {#                            <input type="radio" form="Create product" class="list-title" name="radAnswer"  />{{ i }}#}
+        {#                            <div class="item-id"><span>#</span>182749</div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                {% endfor %}#}
+        {#                <button class="list-button" id="createList-button"><span class="material-icons ">add</span></button>#}
+        {#            </div>#}
+
+        <form method="POST" id="Create product" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <div class="title p-cont">
+                <h3>Product Title</h3>
+                {#            <label>Incluye solo producto, marca, modelo y características principales.</label>#}
+                <label>Include only product, brand, model or main features</label>
+                {{ productForm.title }}
+
             </div>
-            <div class="saved-list">
-                <div class="list-nav">
-                    <div class="item-qty"><span>Qty. </span>3</div>
-                    <div class="list-title">Office Chars</div>
-                    <div class="item-id"><span>#</span>182760</div>
-                </div>
+
+            <div class="description p-cont">
+                <h3>DESCRIPTION</h3>
+                <label>A small description about the main features of the product</label>
+                {{ productForm.description }}
             </div>
 
-            <button class="list-button"><span class="material-icons ">add</span></button>
-        </div>
+            <div class="photo p-cont">
+                <h3>PHOTO</h3>
 
-        <div class="title p-cont">
-            <h3>Product Title</h3>
-{#            <label>Incluye solo producto, marca, modelo y características principales.</label>#}
-            <label>Include only product, brand, model or main features</label>
-            <input type="text" class="inp-title" maxlength="50" placeholder="Example. Herman Miller Office Chair">
-        </div>
+                {{ productForm.image }}
 
+            </div>
 
-{#        <div class="condition p-cont">#}
-{#            <h3>Condicion</h3>#}
-{#            <label>Incluye solo producto, marca, modelo y características principales. T</label>#}
-{#            <label for="con-id"></label>#}
-{#            <select name="condition" id="con-id">#}
-{#                <option value="New">Nuevo</option>#}
-{#                <option value="Used">Usado</option>#}
-{#                <option value="Reacon">Reacondicionado</option>#}
-{#            </select>#}
-{#        </div>#}
-{##}
-{#        <div class="photo p-cont">#}
-{#            <h3>PHOTO</h3>#}
-{#            <div class="photo-file">#}
-{#                <input type="file" id="file-upload" accept="image/"/>#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{#        <div class="deliver p-cont">#}
-{#            <h3>DELIVER</h3>#}
-{#            <label>Decide la manera en la que el comprador puede obtener el producto</label>#}
-{#            <label for="del"></label>#}
-{#            <select name="deliver" id="del">#}
-{#                <option value="store">En tienda</option>#}
-{#                <option value="store-ship">En tienda con envio a domicilio</option>#}
-{#                <option value="mid-point">En persona, a acordar lugar</option>#}
-{#            </select>#}
-{#        </div>#}
-{##}
-{#        <div class="pay p-cont">#}
-{#            <h3>PAY</h3>#}
-{#            <label>Que tipo de pagos aceptas</label>#}
-{#            <label for="pur"></label>#}
-{#            <select name="pay" id="pur">#}
-{#                <option value="store">Solo efectivo</option>#}
-{#                <option value="store-ship">Tarjeta bancaria</option>#}
-{##}
-{#                <option value="store-ship">Tarjeta bancaria con pago a meses</option>#}
-{#                <option value="store-ship">Tarjeta bancaria con pago a meses sin intereses</option>#}
-{#                <option value="mid-point">En persona, a acordar lugar</option>#}
-{#            </select>#}
-{#        </div>#}
+            <div class="price p-cont">
+                <h3>PRICE</h3>
+                <label>Una breve descripcion sobre las caracteristicas del producto</label>
+                {{ productForm.price }}
+            </div>
 
-        <div class="description p-cont">
-            <h3>DESCRIPTION</h3>
-            <label>A small description about the main features of the product</label>
-            <textarea rows="10" cols="50" name="description-box" form="pub-form"
-                      placeholder="Agrega una descripcion..."></textarea>
-        </div>
+            <input class="bouncy" id="subm" type="submit" value="Submit" name="submit"/>
+        </form>
 
-        <div class="price p-cont">
-            <h3>PRICE</h3>
-            <label>Una breve descripcion sobre las caracteristicas del producto</label>
-            <input type="tel" name="currency-field" class="inp-price" maxlength="10"
-                   pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$">
-        </div>
+    </div>
 
-        <input class="bouncy" id="subm" type="submit" value="Submit" name="submit"/>
-    </form>
 
 </main>
 
+{#Modals#}
+
+{#<div class="modal" id="list-modal">#}
+{#    <div class="modal-content">#}
+{#        <div class="close" id="close-listModal">+</div>#}
+{#        <form method="POST" id="Create list">#}
+{#            {% csrf_token %}#}
+{#            {{ listForm }}#}
+{#            <input type="submit" value="Create list" name="form_type">#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#{% block js_block %}#}
+{##}
+{#    <script type="text/javascript" src="{% static 'js/js_publish.js' %}"></script>#}
+{##}
+{#{% endblock %}#}
+{##}
+{#</body>#}
+{#</html>#}
 
 
-</body>
-</html>
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<h1>Test</h1>#}
+{#{{ request.user }}#}
+{##}
+{#<form method="POST" action="">#}
+{#    {% csrf_token %}#}
+{#    {{ listForm }}#}
+{#    <input type="submit" name="create list">#}
+{#</form>#}
+{##}
+{#{%  for i in data %}#}
+{#    {{ i.title }}#}
+{#{% endfor %}#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
