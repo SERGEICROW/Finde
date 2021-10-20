@@ -1,11 +1,10 @@
-import base64
-import platform
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+
+import requests
 
 # Create your views here.
 
@@ -111,17 +110,6 @@ def editLists(request):
 
 @login_required(login_url='log')
 def publish(request):
-    # productForm = NewProduct(request.POST,)
-    #
-    # if productForm.is_valid():
-    #     p = productForm.save(commit=False)
-    #     p.user = (request.user)
-    #     p.save()
-    #     messages.success(request, 'Product added')
-    #     return redirect('edit_lists')
-    # else:
-    #     print('error')
-
     if request.method == 'POST':
         productForm = NewProduct(request.POST, request.FILES)
         if productForm.is_valid():
@@ -141,15 +129,37 @@ def publish(request):
 
 @login_required(login_url='log')
 def test(request):
-    productData = Product.objects.filter(user=request.user)
+    data = request.user.userprofile.address
+    data2 = list(UserProfile.objects.values('address', 'id'))
+    # dc ={}
+    dic = []
+
+    for i in data2:
+        dic = []
+
+    API_KEY = 'AIzaSyDg2KiBdjUjWwkODdQEWmlOdJAo5mzpNOE'
+
+    params = {
+        'key': API_KEY,
+        'address': data
+    }
+
+    base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
+    response = requests.get(base_url, params=params).json()
+    response.keys()
+
+    if response['status'] == 'OK':
+        geometry = response['results'][0]['geometry']
+        lat = geometry['location']['lat']
+        lng = geometry['location']['lng']
 
     context = {
-        'productData': productData
+
     }
+
     return render(request, "test.html", context)
 
 
 def logoutUser(request):
     logout(request)
     return redirect('log')
-

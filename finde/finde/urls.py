@@ -32,7 +32,8 @@ urlpatterns = [
     path('profile/', views.editProfile, name="edit_profile"),
     path('lists/', views.editLists, name='edit_lists'),
     path('publish/', views.publish, name="publish"),
-    path('test/', views.test, name="test")
+    path('test/', views.test, name="test"),
+    # path('json', views.json, name="json")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

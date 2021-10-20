@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{% static 'css/styles_settings.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Settings</title>
+    <script>
+
+    </script>
 </head>
 
 <body>
@@ -102,7 +105,7 @@
                         {% for data in data %}
                             <li class="profile-form-li">
                                 <div style="color: #00B050">
-                                    {#                                    <button><span class="material-icons edit-icon">edit</span></button>#}
+                                    <button><span class="material-icons edit-icon">edit</span></button>
                                     <span class="material-icons">person</span>
                                     Usuario
                                 </div>
@@ -110,7 +113,7 @@
                             </li>
                             <li class="profile-form-li">
                                 <div style="color: #00B050">
-                                    {#                                    <button><span class="material-icons edit-icon">edit</span></button>#}
+                                    <button><span class="material-icons edit-icon">edit</span></button>
                                     <span class="material-icons">alternate_email</span>
                                     Correo
                                 </div>
@@ -175,13 +178,13 @@
                         </li>
                         <h2>En caso de tener tienda fisica, escribe la direccion donde las personas pueden ver tus
                             productos</h2>
-                        {#                        <li class="commerce-form-li">#}
-                        {#                            <div><span class="material-icons edit-icon">edit</span>Horario</div>#}
-                        {#                            <div class="commerce-data">TEST Lunes - Viernes de 1:00pm a 8:pm / Sabados de 1:00pm a#}
-                        {#                                3:00pm#}
-                        {#                            </div>#}
-                        {#                        </li>#}
-                        {#                        <h2>En caso de tener tienda fisica, marca tu horario disponible</h2>#}
+                        <li class="commerce-form-li">
+                            <div><span class="material-icons edit-icon">edit</span>Horario</div>
+                            <div class="commerce-data">TEST Lunes - Viernes de 1:00pm a 8:pm / Sabados de 1:00pm a
+                                3:00pm
+                            </div>
+                        </li>
+                        <h2>En caso de tener tienda fisica, marca tu horario disponible</h2>
                         <li class="profile-form-li">
                             <div><span class="material-icons edit-icon">edit</span>*Codigo Postal</div>
                             <div class="commerce-data">TEST 04230</div>
@@ -195,7 +198,7 @@
     </div>
 </div>
 
-{#Modals#}
+Modals
 
 <div class="modal" id="pic-modal">
     <div class="modal-content">
@@ -236,6 +239,9 @@
         </form>
     </div>
 </div>
+
+
+
 
 {% block js_block %}
 

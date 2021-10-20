@@ -234,10 +234,21 @@ li {
 /*MAPS*/
 
 #map {
-
+    /*top: 130px;*/
     /*padding-top: 100px;*/
     height: 100vh;
   /* The height is 400 pixels */
     width: 100%;
   /* The width is the width of the web page */
+}
+
+.custom-map-control-button {
+    background-color: #00B050;
+    color: white;
+    font-size: 25px;
+    margin-top: 150px;
+    margin-left: 1500px;
+    border-style: dashed;
+    border-color: #00B050;
+    cursor: pointer;
 }
