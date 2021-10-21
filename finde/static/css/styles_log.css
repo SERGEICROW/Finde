@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+:visited {
+    color: white;
+}
+
 body {
     margin: 0;
     display: flex;

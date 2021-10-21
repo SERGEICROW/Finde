@@ -11,16 +11,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <title>Home</title>
-    {#    <script src="{% static 'js/js_home.js' %}"></script>#}
 
 </head>
 
 <body style="background-color: white">
-
-{#{% for i in dc %}#}
-{#    {{ i }}#}
-{#{% endfor %}#}
-{{ dc }}
 
 <header>
 
@@ -60,7 +54,7 @@
             </li>
             <li class="cp"><span class="material-icons">push_pin</span><a href="#">Favoritos</a></li>
             <li><span class="material-icons">playlist_add</span><a href="#">Publicar</a></li>
-            <li><span class="material-icons">my_location</span><a href="#">Locacion</a></li>
+            <li><span class="material-icons">my_location</span><button id="location-button2" value="locacion">Locacion</button></li>
         </ul>
     </div>
 
@@ -78,28 +72,25 @@
     let map, infoWindow;
 
 
-
     //INIT COORDINATES
     var markersOnMap = [
         {
-            id: {
-                id: 1
-            },
             LatLng: [{
-                lat: 19.392856,
-                lng: -99.162641
+                {#id: 2,#}
+                lat: 19.3497586,
+                lng: -99.1311546
             }]
         },
         {
             LatLng: [{
-                lat: 19.393686,
-                lng: -99.170752
+                lat: 19.3550088,
+                lng: -99.1293371
             }]
         },
         {
             LatLng: [{
-                lat: 19.408309,
-                lng: -99.163104
+                lat: 19.3587189,
+                lng: -99.13814699999999
             }]
         },
         {
@@ -136,10 +127,12 @@
         infoWindow = new google.maps.InfoWindow();
 
         const locationButton = document.createElement("button");
+        const bt = document.getElementById("location-button2")
+
 
         locationButton.textContent = "MI UBICACION";
         locationButton.classList.add("custom-map-control-button");
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(bt);
         locationButton.addEventListener("click", () => {
             // Try HTML5 geolocation.
             if (navigator.geolocation) {

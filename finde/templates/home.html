@@ -11,26 +11,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <title>Home</title>
-    <script>
-        // Initialize and add the map
-        function initMap() {
-            // The location of Uluru
-            const uluru = {lat: -25.344, lng: 131.036};
-            // The map, centered at Uluru
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
-                center: uluru,
-            });
-            // The marker, positioned at Uluru
-            const marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-            });
-        }
-    </script>
+
 </head>
 
-<body>
+<body style="background-color: white">
 
 <header>
 
@@ -68,9 +52,9 @@
                 <span id="cp-icon">edit_location_alt</span>
                 <input type="text" id="cp-input" placeholder="Ingresa tu CP">
             </li>
-            <li class="cp"><span class="material-icons">push_pin</span><a href="#">Favoritos</a></li>
-            <li><span class="material-icons">playlist_add</span><a href="#">Publicar</a></li>
-            <li><span class="material-icons">my_location</span><a href="#">Locacion</a></li>
+            <li class="cp"><span class="material-icons">push_pin</span><a href="{% url 'edit_lists' %}">Mis listados</a></li>
+            <li><span class="material-icons">playlist_add</span><a href="{% url 'publish' %}">Publicar</a></li>
+
         </ul>
     </div>
 
@@ -79,13 +63,113 @@
 
 <div id="map"></div>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg2KiBdjUjWwkODdQEWmlOdJAo5mzpNOE&callback=initMap"
+        async>
+</script>
 
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg2KiBdjUjWwkODdQEWmlOdJAo5mzpNOE&callback=initMap&libraries=&v=weekly"
-        async
-></script>
+<script>
+    //INIT MAP
+    let map, infoWindow;
 
-{#<script src="js_home.js"></script>#}
+
+    //INIT COORDINATES
+    var markersOnMap = [
+        {
+            LatLng: [{
+                {#id: 2,#}
+                lat: 19.3497586,
+                lng: -99.1311546
+            }]
+        },
+        {
+            LatLng: [{
+                lat: 19.3550088,
+                lng: -99.1293371
+            }]
+        },
+        {
+            LatLng: [{
+                lat: 19.3587189,
+                lng: -99.13814699999999
+            }]
+        },
+        {
+            LatLng: [{
+                lat: 19.396479,
+                lng: -99.173468
+            }]
+        }
+    ]
+
+    //INIT MARKERS
+    function addMarkerInfo() {
+        for (var i = 0; i < markersOnMap.length; i++) {
+            const marker = new google.maps.Marker({
+                position: markersOnMap[i].LatLng[0],
+                map: map
+            });
+        }
+    }
+
+    //INIT MAP
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: {lat: 39.742043, lng: -104.991531},
+            zoom: 14,
+            mapTypeId: "roadmap",
+            mapId: '73323dfcd106d471',
+            accuracy: '10',
+        });
+        addMarkerInfo();
+
+
+        //LOCALIZATION BUTTON
+        infoWindow = new google.maps.InfoWindow();
+
+        const locationButton = document.createElement("button");
+
+        locationButton.textContent = "MI UBICACION";
+        locationButton.classList.add("custom-map-control-button");
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+        locationButton.addEventListener("click", () => {
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent("Location found.");
+                        infoWindow.open(map);
+                        map.setCenter(pos);
+                    },
+                    () => {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    }
+                );
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        });
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(
+            browserHasGeolocation
+                ? "Error: The Geolocation service failed."
+                : "Error: Your browser doesn't support geolocation."
+        );
+        infoWindow.open(map);
+    }
+
+    //ENDS GEOLOCALIZATINO BUTTON
+
+</script>
 
 </body>
 

@@ -30,6 +30,7 @@
                 </h1>
             </div>
         </a>
+
         {{ request.user }}
     </div>
 
@@ -42,40 +43,38 @@
             <a href="{% url 'edit_profile' %}">
                 <div class="titles">
                     <span class="material-icons menu-icon">manage_accounts</span>
-                    Editar Perfil
+                    Edit Profile
                 </div>
                 <ul class="sub-menu">
                     <a href="#ancher-1">
-                        <li>Imagen de perfil</li>
+                        <li>Profile picture</li>
                     </a>
                     <a href="#ancher-2">
-                        <li>Datos de perfil</li>
+                        <li>Profile data</li>
                     </a>
                     <a href="#ancher-3">
-                        <li>Datos de vendedor</li>
+                        <li>Commerce Data</li>
                     </a>
                 </ul>
             </a>
             <a href="{% url 'edit_lists' %}">
                 <div class="titles">
                     <span class="material-icons menu-icon">format_list_bulleted</span>
-                    Mis listados
+                    My lists
                 </div>
                 <ul class="sub-menu">
-                    <li>Ver, Agregar, Eliminar Listados</li>
+                    <li>See, Add, Erase Lists and Products</li>
                 </ul>
             </a>
             <a>
                 <div class="titles">
-                    <span class="material-icons menu-icon">settings</span>Configuracion
+                    <span class="material-icons menu-icon">settings</span>Configuration
                 </div>
                 <ul class="sub-menu">
-                    <li>Cambiar contrasena</li>
-                    <li>Autenticacion de dos pasos</li>
-                    <li>Cuentas ligadas</li>
-                    <li>Eliminar cuenta</li>
-                    <li>Seguridad</li>
-                    <li>Privacidad</li>
+                    <li>Change Password</li>
+                    <li>Erase Account</li>
+                    <li>Security</li>
+                    <li>Privacy</li>
                 </ul>
             </a>
         </div>
@@ -83,39 +82,39 @@
 
     <div id="right">
         <div id="profile-edit-main">
-            <div class="main-title"><h3>Editar perfil</h3></div>
+            <div class="main-title"><h3>Edit Profile</h3></div>
 
             <div class="main-container" id="edit-profile">
                 <div id="ancher-1"></div>
                 <div class="sub-containers">
-                    <h4 class="sub-titles">Imagen de Perfil</h4>
+                    <h4 class="sub-titles">Profile picture</h4>
                     <div class="profile-pic">
                         <img id="picture" src="{% static 'imgs/profile_pic.png' %}" alt="logo">
                         <button id="imageEdit-button"><span class="material-icons" id="pic-icon">edit</span></button>
-                        <h2>Imagen de formato, .jpg, .png, maximo 800 x 800 px, no se admiten imagenes obsenas</h2>
+                        <h2>Picture format, .jpg, .png, maximo 800 x 800 px, no obscene pictures allowed</h2>
                     </div>
                 </div>
 
                 <div id="ancher-2"></div>
                 <div class="sub-containers">
-                    <h4 class="sub-titles">Datos de perfil</h4>
-                    <h2>Estos son los datos personales de tu cuenta de usuario, para vender debes registrarte en
-                        <a href="#ancher-3" style="color: #00afee">Datos de vendedor</a></h2>
+                    <h4 class="sub-titles">Profile data</h4>
+                    <h2>This is the personal data of your user account, to sell you must register at
+                        <a href="#ancher-3" style="color: #00afee">Commerce data</a></h2>
                     <ul class="profile-form">
                         {% for data in data %}
                             <li class="profile-form-li">
                                 <div style="color: #00B050">
-                                    <button><span class="material-icons edit-icon">edit</span></button>
+
                                     <span class="material-icons">person</span>
-                                    Usuario
+                                    User
                                 </div>
                                 <div class="profile-data">{{ request.user }}</div>
                             </li>
                             <li class="profile-form-li">
                                 <div style="color: #00B050">
-                                    <button><span class="material-icons edit-icon">edit</span></button>
+
                                     <span class="material-icons">alternate_email</span>
-                                    Correo
+                                    Mail
                                 </div>
                                 <div class="profile-data">{{ user.email }}</div>
                             </li>
@@ -127,26 +126,26 @@
                                 </div>
                                 <div class="profile-data">{{ data.curp }}</div>
                             </li>
-                            <h2>Esto con la intencion de generar un ecosistema seguro libre de fraudes </h2>
+                            <h2>We ask this with the intention of create a secure and fraud free environment </h2>
                             <li class="profile-form-li">
                                 <div>
                                     <button id="phoneEdit-button"><span class="material-icons edit-icon">edit</span>
                                     </button>
-                                    Telefono
+                                    Phone
                                 </div>
                                 <div class="profile-data">{{ data.phone }}</div>
                             </li>
-                            <h2>Telefono para ingreso a cuenta</h2>
+                            <h2>Phone needed to activate 2 step verification process</h2>
                             <li class="profile-form-li">
                                 <div>
                                     <button id="addressEdit-button"><span class="material-icons edit-icon">edit</span>
                                     </button>
-                                    Direccion de recepcion de envios
+                                    Address for Maps
                                 </div>
                                 <div class="profile-data">{{ data.address }}</div>
                             </li>
-                            <h2>Solo para generar automaticamente un aproximado de costo y tiempo de envio con la
-                                paqueteria</h2>
+                            <h2>Just to automatically generate an approximate of shipping cost and time with the
+                                selected deliver service</h2>
                         {% endfor %}
                     </ul>
                 </div>

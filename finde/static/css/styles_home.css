@@ -252,3 +252,7 @@ li {
     border-color: #00B050;
     cursor: pointer;
 }
+
+.gmnoprint {
+    margin-top: 150px !important;
+}

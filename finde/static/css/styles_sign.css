@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+:visited {
+    color: white;
+}
+
 body {
     margin: 0;
     display: flex;
@@ -49,6 +53,8 @@ h1 {
 }
 
 h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-family: 'Gowun Dodum', sans-serif;
     font-weight: lighter;
     font-size: 24px;
@@ -140,6 +146,7 @@ input {
 }
 
 .column-footer {
+    margin-top: 30px;
     display: flex;
     justify-content: space-evenly;
     position: center;

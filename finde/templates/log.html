@@ -16,12 +16,14 @@
 <div id="main-container">
 
     <div id="column">
-        <div class="column-header">
-            <img id="logo" src="{% static 'imgs/img_logo.png' %}">
-            <h1 id="name">
-                F<span style="color: #00B050;">inde</span>
-            </h1>
-        </div>
+        <a href="{% url 'home' %}">
+            <div class="column-header">
+                <img id="logo" src="{% static 'imgs/img_logo.png' %}">
+                <h1 id="name">
+                    F<span style="color: #00B050;">inde</span>
+                </h1>
+            </div>
+        </a>
         <h2 class="column-caption-1">
             Acceder!
         </h2>

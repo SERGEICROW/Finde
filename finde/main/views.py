@@ -61,6 +61,8 @@ def home_logged(request):
 @login_required(login_url='log')
 def editProfile(request):
     data = UserProfile.objects.filter(user=request.user)
+    # user = request.user
+    # email = user.email
     curpForm = CurpUpdate()
     phoneForm = PhoneUpdate()
     bAddressForm = BAddressUpdate()
@@ -92,7 +94,8 @@ def editProfile(request):
     context = {'data': data,
                'curpForm': curpForm,
                'phoneForm': phoneForm,
-               'bAddressForm': bAddressForm}
+               'bAddressForm': bAddressForm,
+               }
 
     return render(request, "edit_profile.html", context)
 
@@ -130,30 +133,38 @@ def publish(request):
 @login_required(login_url='log')
 def test(request):
     data = request.user.userprofile.address
-    data2 = list(UserProfile.objects.values('address', 'id'))
-    # dc ={}
-    dic = []
+    # address = list(UserProfile.objects.values('id', 'address'))
 
-    for i in data2:
-        dic = []
+    ids = [t[0] for t in UserProfile.objects.values_list('id','address')]
+    data2 = [i[1] for i in UserProfile.objects.values_list('id','address')]
+    coords = []
+
+
+
+
 
     API_KEY = 'AIzaSyDg2KiBdjUjWwkODdQEWmlOdJAo5mzpNOE'
 
-    params = {
-        'key': API_KEY,
-        'address': data
-    }
+    for i in data2:
+        params = {
+            'key': API_KEY,
+            'address': i
+        }
 
-    base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
-    response = requests.get(base_url, params=params).json()
-    response.keys()
+        base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
+        response = requests.get(base_url, params=params).json()
+        response.keys()
 
-    if response['status'] == 'OK':
-        geometry = response['results'][0]['geometry']
-        lat = geometry['location']['lat']
-        lng = geometry['location']['lng']
+        if response['status'] == 'OK':
+            geometry = response['results'][0]['geometry']
+            lat = geometry['location']['lat']
+            lng = geometry['location']['lng']
+
+            coords.append([lat,lng])
 
     context = {
+        'coords': coords,
+        'data': data
 
     }
 

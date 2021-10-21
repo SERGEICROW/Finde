@@ -38,36 +38,32 @@
             <a href="{% url 'edit_profile' %}">
                 <div class="titles">
                     <span class="material-icons menu-icon">manage_accounts</span>
-                    Editar Perfil
+                    Edit Profile
                 </div>
                 <ul class="sub-menu">
-                    <li>Imagen de perfil</li>
-                    <a href="{% url 'edit_profile' %}">
-                        <li>Datos de perfil</li>
-                    </a>
-                    <li>Datos de comercio</li>
+                    <li>Profile picture</li>
+                    <li>Profile data</li>
+                    <li>Commerce Data</li>
                 </ul>
             </a>
             <a href="{% url 'edit_lists' %}">
                 <div class="titles">
                     <span class="material-icons menu-icon">format_list_bulleted</span>
-                    Mis listados
+                    My lists
                 </div>
                 <ul class="sub-menu">
-                    <li>Ver, Agregar, Eliminar Listados</li>
+                    <li>See, Add, Erase Lists and Products</li>
                 </ul>
             </a>
             <a>
                 <div class="titles">
-                    <span class="material-icons menu-icon">settings</span>Configuracion
+                    <span class="material-icons menu-icon">settings</span>Configuration
                 </div>
                 <ul class="sub-menu">
-                    <li>Cambiar contrasena</li>
-                    <li>Autenticacion de dos pasos</li>
-                    <li>Cuentas ligadas</li>
-                    <li>Eliminar cuenta</li>
-                    <li>Seguridad</li>
-                    <li>Privacidad</li>
+                    <li>Change Password</li>
+                    <li>Erase Account</li>
+                    <li>Security</li>
+                    <li>Privacy</li>
                 </ul>
             </a>
         </div>
@@ -89,7 +85,7 @@
                             <input id="input-search" placeholder="Search product">
                         </div>
                         <a href="{% url 'publish' %}">
-                            <button id="publish">Publicar</button>
+                            <button id="publish">Publish</button>
                         </a>
                     </nav>
                 </div>

@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles_publish.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/styles_publish.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Publish</title>
 
@@ -49,11 +49,11 @@
                         <li><span class="material-icons l-icon">logout</span></li>
                     </ul>
                     <ul id="right-column">
-                        <li><a href="#"><h2>Editar Perfil</h2></a></li>
+                        <li><a href="{% url 'edit_profile' %}"><h2>Editar Perfil</h2></a></li>
                         <li><a href="#"><h2>Favoritos</h2></a></li>
-                        <li><a href="#"><h2>Mss Listados</h2></a></li>
+                        <li><a href="{% url 'edit_lists' %}"><h2>Mss Listados</h2></a></li>
                         <li><a href="#"><h2>Configuracion</h2></a></li>
-                        <li><a href="home.html"><h2>Logout</h2></a></li>
+                        <li><a href="{% url 'logout' %}"><h2>Logout</h2></a></li>
                     </ul>
                 </div>
             </div>
@@ -122,50 +122,11 @@
 
 </main>
 
-{#Modals#}
+{% block js_block %}
 
-{#<div class="modal" id="list-modal">#}
-{#    <div class="modal-content">#}
-{#        <div class="close" id="close-listModal">+</div>#}
-{#        <form method="POST" id="Create list">#}
-{#            {% csrf_token %}#}
-{#            {{ listForm }}#}
-{#            <input type="submit" value="Create list" name="form_type">#}
-{#        </form>#}
-{#    </div>#}
-{#</div>#}
-{##}
-{#{% block js_block %}#}
-{##}
-{#    <script type="text/javascript" src="{% static 'js/js_publish.js' %}"></script>#}
-{##}
-{#{% endblock %}#}
-{##}
-{#</body>#}
-{#</html>#}
+    <script type="text/javascript" src="js_home_logged.js"></script>
+    <script type="text/javascript" src="{% static 'js/js_home_logged.js' %}"></script>
 
-
-{#{% load static %}#}
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>Title</title>#}
-{#</head>#}
-{#<body>#}
-{#<h1>Test</h1>#}
-{#{{ request.user }}#}
-{##}
-{#<form method="POST" action="">#}
-{#    {% csrf_token %}#}
-{#    {{ listForm }}#}
-{#    <input type="submit" name="create list">#}
-{#</form>#}
-{##}
-{#{%  for i in data %}#}
-{#    {{ i.title }}#}
-{#{% endfor %}#}
-{##}
-{##}
-{#</body>#}
-{#</html>#}
+{% endblock %}
+</body>
+</html>
