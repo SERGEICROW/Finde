@@ -92,24 +92,30 @@
             </div>
             <hr style="height: 240px">
 
-            {% for i in productData %}
-                <div class="list">
-                    <div class="product">
-                        {% if i.image %}
-                            <img class="product-image" src="{{ i.image.url }}" alt="No image uploaded">
-                        {% endif %}
-                        <div class="vl"></div>
-                        <p class="product-title p-titles">{{ i.title }}</p>
-                        <div class="vl"></div>
-                        <p class="product-deliver p-titles">{{ i.description }}</p>
-                        <div class="vl"></div>
-                        <p class="product-price p-titles"><span>$</span>{{ i.price }}</p>
-                        <div class="vl"></div>
-                        <a><span class="material-icons edit-prod-icon">edit</span></a>
-                    </div>
+            {% if  productData|length == 0 %}
+                <div class="message">
+                    <div><span class="material-icons" style="font-size: 35px !important; margin-right:10px;">filter_alt_off</span>You don't have any products yet!</div>
                 </div>
-                {{ productData.title }}
-            {% endfor %}
+            {% else %}
+                {% for i in productData %}
+                    <div class="list">
+                        <div class="product">
+                            {% if i.image %}
+                                <img class="product-image" src="{{ i.image.url }}" alt="No image uploaded">
+                            {% endif %}
+                            <div class="vl"></div>
+                            <p class="product-title p-titles">{{ i.title }}</p>
+                            <div class="vl"></div>
+                            <p class="product-deliver p-titles">{{ i.description }}</p>
+                            <div class="vl"></div>
+                            <p class="product-price p-titles"><span>$</span>{{ i.price }}</p>
+                            <div class="vl"></div>
+                            <a><span class="material-icons edit-prod-icon">edit</span></a>
+                        </div>
+                    </div>
+                    {{ productData.title }}
+                {% endfor %}
+            {% endif %}
 
 
             <hr style="height: 240px; border-style: none">

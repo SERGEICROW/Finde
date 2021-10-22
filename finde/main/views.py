@@ -8,7 +8,7 @@ import requests
 
 # Create your views here.
 
-from .forms import SignUpForm, CurpUpdate, PhoneUpdate, BAddressUpdate, NewProduct
+from .forms import *
 from .models import UserProfile, Product
 
 
@@ -25,11 +25,10 @@ def signPage(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data['username']
-            # user = form.cleaned_data.get('username')
-
-            messages.success(request, 'Account was created for ' + user)
-
+            messages.success(request, 'Tu cuenta fue creada ' + user)
             return redirect('log')
+        else:
+            messages.info(request, 'Tu usuario ya esta registrado o las contrasenas no son correctas')
 
     context = {'form': form}
 
@@ -55,25 +54,36 @@ def logPage(request):
 
 @login_required(login_url='log')
 def home_logged(request):
-    return render(request, "home_logged.html", {})
+    data = UserProfile.objects.filter(user=request.user)
+
+    context = {
+        'data': data
+    }
+
+    return render(request, "home_logged.html", context)
 
 
 @login_required(login_url='log')
 def editProfile(request):
     data = UserProfile.objects.filter(user=request.user)
-    # user = request.user
-    # email = user.email
+
     curpForm = CurpUpdate()
     phoneForm = PhoneUpdate()
     bAddressForm = BAddressUpdate()
+    pictureForm = ProfilePicUpdate()
 
     if request.method == 'POST':
+        if request.POST.get("form_type") == 'Update Picture':
+            pictureForm = ProfilePicUpdate(request.POST, request.FILES, instance=request.user.userprofile)
+            if pictureForm.is_valid():
+                pictureForm.save()
+                messages.success(request, 'Picture updated!')
+
         if request.POST.get("form_type") == 'Update Curp':
             curpForm = CurpUpdate(request.POST, instance=request.user.userprofile)
             if curpForm.is_valid():
                 curpForm.save()
                 messages.success(request, 'Curp updated!')
-                return redirect('edit_profile')
 
         elif request.POST.get("form_type") == 'Update Phone':
             phoneForm = PhoneUpdate(request.POST, instance=request.user.userprofile)
@@ -90,11 +100,13 @@ def editProfile(request):
         curpForm = CurpUpdate()
         phoneForm = PhoneUpdate()
         bAddressForm = BAddressUpdate()
+        pictureForm = ProfilePicUpdate()
 
     context = {'data': data,
                'curpForm': curpForm,
                'phoneForm': phoneForm,
                'bAddressForm': bAddressForm,
+               'pictureForm': pictureForm
                }
 
     return render(request, "edit_profile.html", context)
@@ -113,6 +125,8 @@ def editLists(request):
 
 @login_required(login_url='log')
 def publish(request):
+    data = UserProfile.objects.filter(user=request.user)
+
     if request.method == 'POST':
         productForm = NewProduct(request.POST, request.FILES)
         if productForm.is_valid():
@@ -124,7 +138,8 @@ def publish(request):
         productForm = NewProduct()
 
     context = {
-        'productForm': productForm
+        'productForm': productForm,
+        'data': data
     }
 
     return render(request, "publish.html", context)
@@ -135,13 +150,9 @@ def test(request):
     data = request.user.userprofile.address
     # address = list(UserProfile.objects.values('id', 'address'))
 
-    ids = [t[0] for t in UserProfile.objects.values_list('id','address')]
-    data2 = [i[1] for i in UserProfile.objects.values_list('id','address')]
+    ids = [t[0] for t in UserProfile.objects.values_list('id', 'address')]
+    data2 = [i[1] for i in UserProfile.objects.values_list('id', 'address')]
     coords = []
-
-
-
-
 
     API_KEY = 'AIzaSyDg2KiBdjUjWwkODdQEWmlOdJAo5mzpNOE'
 
@@ -160,12 +171,11 @@ def test(request):
             lat = geometry['location']['lat']
             lng = geometry['location']['lng']
 
-            coords.append([lat,lng])
+            coords.append([lat, lng])
 
     context = {
         'coords': coords,
         'data': data
-
     }
 
     return render(request, "test.html", context)

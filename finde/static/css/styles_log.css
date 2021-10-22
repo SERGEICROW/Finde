@@ -192,3 +192,9 @@ a.button1:hover {
     border: none;
     cursor: pointer;
 }
+
+#messages {
+    margin: 25px 35px 10px;
+    color: #00B050;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}

@@ -7,3 +7,4 @@ admin.site.register(UserProfile)
 # admin.site.register(List)
 admin.site.register(Product)
 
+

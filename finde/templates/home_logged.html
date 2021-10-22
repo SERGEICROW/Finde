@@ -46,7 +46,15 @@
             </div>
 
             <div class="dropMenu-toggle">
-                <img id="profile-pic" src="{% static 'imgs/profile_pic.png' %}">
+
+                {% for i in data %}
+                    {% if i.profile_pic %}
+                        <img id="profile-pic" src="{{ i.profile_pic.url }}" alt="Error">
+                    {% else %}
+                        <img id="profile-pic" src="{% static 'imgs/profile_pic.png' %}" alt="logo">
+                    {% endif %}
+                {% endfor %}
+
                 {{ request.user }}
                 <div class="toggle">
                     <div class="dropMenu">

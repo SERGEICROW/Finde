@@ -12,6 +12,12 @@ class SignUpForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 
+class ProfilePicUpdate(ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['profile_pic']
+
+
 class CurpUpdate(ModelForm):
     class Meta:
         model = UserProfile

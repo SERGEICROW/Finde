@@ -4,13 +4,12 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 
 
-
 # Create your models here.
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='userprofile', null=True, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(null=True, blank=True, upload_to="profile_imgs")
+    profile_pic = models.ImageField(null=True, blank=True, upload_to="profile_img")
     address = models.CharField(null=True, blank=True, max_length=150)
     curp = models.CharField(null=True, blank=True, max_length=18)
     phone = models.IntegerField(null=True, blank=True)

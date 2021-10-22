@@ -30,7 +30,6 @@
                 </h1>
             </div>
         </a>
-
         {{ request.user }}
     </div>
 
@@ -89,7 +88,15 @@
                 <div class="sub-containers">
                     <h4 class="sub-titles">Profile picture</h4>
                     <div class="profile-pic">
-                        <img id="picture" src="{% static 'imgs/profile_pic.png' %}" alt="logo">
+
+                        {% for i in data %}
+                            {% if i.profile_pic%}
+                                <img id="picture" src="{{ i.profile_pic.url }}" alt="Error">
+                            {% else %}
+                                <img id="picture" src="{% static 'imgs/profile_pic.png' %}" alt="logo">
+                            {% endif %}
+                        {% endfor %}
+
                         <button id="imageEdit-button"><span class="material-icons" id="pic-icon">edit</span></button>
                         <h2>Picture format, .jpg, .png, maximo 800 x 800 px, no obscene pictures allowed</h2>
                     </div>
@@ -202,17 +209,23 @@ Modals
 <div class="modal" id="pic-modal">
     <div class="modal-content">
         <div class="close" id="close-picModal">+</div>
-        SUBIR IMAGEN
+        <h2>Actualiza tu imagen</h2>
+        <form class="form-items" method="POST" id="Update Picture" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{ pictureForm.profile_pic }}
+            <input class="modal-submit" type="submit" value="Update Picture" name="form_type">
+        </form>
     </div>
 </div>
 
 <div class="modal" id="curp-modal">
     <div class="modal-content">
         <div class="close" id="close-curpModal">+</div>
-        <form method="POST" id="Update Curp">
+        <h2>Ingresa tu nuevo CURP</h2>
+        <form class="form-items" method="POST" id="Update Curp">
             {% csrf_token %}
             {{ curpForm.curp }}
-            <input type="submit" value="Update Curp" name="form_type">
+            <input class="modal-submit" type="submit" value="Update Curp" name="form_type">
         </form>
     </div>
 </div>
@@ -220,10 +233,11 @@ Modals
 <div class="modal" id="phone-modal">
     <div class="modal-content">
         <div class="close" id="close-phoneModal">+</div>
-        <form method="POST" id="Update Phone">
+        <h2>Ingresa tu nuevo Telefono</h2>
+        <form class="form-items" method="POST" id="Update Phone">
             {% csrf_token %}
             {{ phoneForm.phone }}
-            <input type="submit" value="Update Phone" name="form_type">
+            <input class="modal-submit" type="submit" value="Update Phone" name="form_type">
         </form>
     </div>
 </div>
@@ -231,10 +245,11 @@ Modals
 <div class="modal" id="address-modal">
     <div class="modal-content">
         <div class="close" id="close-addressModal">+</div>
-        <form method="POST" id="Update Address">
+        <h2>Ingresa tu nueva direccion</h2>
+        <form class="form-items" method="POST" id="Update Address">
             {% csrf_token %}
             {{ bAddressForm.address }}
-            <input type="submit" value="Update Address" name="form_type">
+            <input class="modal-submit" type="submit" value="Update Address" name="form_type">
         </form>
     </div>
 </div>

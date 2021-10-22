@@ -38,7 +38,13 @@
 
 
         <div class="dropMenu-toggle">
-            <img id="profile-pic" src="{% static 'imgs/profile_pic.png' %}" alt="profile pic">
+            {% for i in data %}
+                {% if i.profile_pic %}
+                    <img id="profile-pic" src="{{ i.profile_pic.url }}" alt="Error">
+                {% else %}
+                    <img id="profile-pic" src="{% static 'imgs/profile_pic.png' %}" alt="logo">
+                {% endif %}
+            {% endfor %}
             <div class="toggle">
                 <div class="dropMenu">
                     <ul id="left-column">
@@ -89,7 +95,6 @@
             {% csrf_token %}
             <div class="title p-cont">
                 <h3>Product Title</h3>
-                {#            <label>Incluye solo producto, marca, modelo y características principales.</label>#}
                 <label>Include only product, brand, model or main features</label>
                 {{ productForm.title }}
 

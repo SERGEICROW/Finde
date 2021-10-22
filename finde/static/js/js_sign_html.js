@@ -1,15 +1,9 @@
 //checkbox variables
-var x = document.getElementById("");
-var y = document.getElementById("");
+var x = document.getElementById("psw_1");
+var y = document.getElementById("psw_2");
 
-//password correct input variables
-var myInput = document.getElementById("psw_1");
-var letter = document.getElementById("letter");
-var capital = document.getElementById("capital");
-var number = document.getElementById("number");
-var length = document.getElementById("length");
 
-//checkbox function
+// checkbox function
 function checkToggle() {
     if (x.type && y.type === "password") {
         x.type = "text";
@@ -21,25 +15,16 @@ function checkToggle() {
     console.log("di")
 }
 
-//matching passwords function
-function checkPassword(form) {
-    x = form.password1.value;
-    y = form.password2.value;
 
-    if (x === '')
-        alert ("Por favor ingrese contrasena");
 
-    else if (y === '')
-        alert ("Por favor confirme contrasena");
 
-    else if (x !== y) {
-        alert ("\nLa contrasena no es la misma, intente de nuevo")
-        return false;
-    }
-    else{
-        return true;
-    }
-}
+// password correct input variables
+var myInput = document.getElementById("psw_1");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
 
 // When the user clicks outside of the password field, hide the message box
     document.getElementById("message").style.display = "none";

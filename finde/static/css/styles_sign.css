@@ -118,10 +118,20 @@ input {
     border-style: double;
 }
 
-#message p {
-    padding: 0px 35px;
+#message {
+    padding: 35px;
+    margin-left: 20px;
     font-size: 14px;
 }
+
+#messages {
+    margin: 35px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: red;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
