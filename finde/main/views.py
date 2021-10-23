@@ -13,7 +13,12 @@ from .models import UserProfile, Product
 
 
 def home(request):
-    return render(request, "home.html", {})
+
+    context = {
+
+    }
+
+    return render(request, "home.html", context)
 
 
 def signPage(request):
@@ -147,6 +152,8 @@ def publish(request):
 
 @login_required(login_url='log')
 def test(request):
+
+
     data = request.user.userprofile.address
     # address = list(UserProfile.objects.values('id', 'address'))
 

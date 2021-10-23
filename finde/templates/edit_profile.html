@@ -42,14 +42,14 @@
             <a href="{% url 'edit_profile' %}">
                 <div class="titles">
                     <span class="material-icons menu-icon">manage_accounts</span>
-                    Edit Profile
+                    Editar Perfil
                 </div>
                 <ul class="sub-menu">
                     <a href="#ancher-1">
-                        <li>Profile picture</li>
+                        <li>Imagen de perfil</li>
                     </a>
                     <a href="#ancher-2">
-                        <li>Profile data</li>
+                        <li>Informacion personal</li>
                     </a>
                     <a href="#ancher-3">
                         <li>Commerce Data</li>
@@ -59,21 +59,21 @@
             <a href="{% url 'edit_lists' %}">
                 <div class="titles">
                     <span class="material-icons menu-icon">format_list_bulleted</span>
-                    My lists
+                    Mis Productos
                 </div>
                 <ul class="sub-menu">
-                    <li>See, Add, Erase Lists and Products</li>
+                    <li>Ve, agrega o borra listados y productos</li>
                 </ul>
             </a>
             <a>
                 <div class="titles">
-                    <span class="material-icons menu-icon">settings</span>Configuration
+                    <span class="material-icons menu-icon">settings</span>Configuracion
                 </div>
                 <ul class="sub-menu">
-                    <li>Change Password</li>
-                    <li>Erase Account</li>
-                    <li>Security</li>
-                    <li>Privacy</li>
+                    <li>Cambiar contrasena</li>
+                    <li>Borrar cuenta</li>
+                    <li>Seguridad</li>
+                    <li>Privacidad</li>
                 </ul>
             </a>
         </div>
@@ -81,12 +81,12 @@
 
     <div id="right">
         <div id="profile-edit-main">
-            <div class="main-title"><h3>Edit Profile</h3></div>
+            <div class="main-title"><h3>Edit Perfil</h3></div>
 
             <div class="main-container" id="edit-profile">
                 <div id="ancher-1"></div>
                 <div class="sub-containers">
-                    <h4 class="sub-titles">Profile picture</h4>
+                    <h4 class="sub-titles">Imagen de perfil</h4>
                     <div class="profile-pic">
 
                         {% for i in data %}
@@ -104,7 +104,7 @@
 
                 <div id="ancher-2"></div>
                 <div class="sub-containers">
-                    <h4 class="sub-titles">Profile data</h4>
+                    <h4 class="sub-titles">Datos de perfil</h4>
                     <h2>This is the personal data of your user account, to sell you must register at
                         <a href="#ancher-3" style="color: #00afee">Commerce data</a></h2>
                     <ul class="profile-form">
@@ -138,7 +138,7 @@
                                 <div>
                                     <button id="phoneEdit-button"><span class="material-icons edit-icon">edit</span>
                                     </button>
-                                    Phone
+                                    Telefono
                                 </div>
                                 <div class="profile-data">{{ data.phone }}</div>
                             </li>
@@ -147,7 +147,7 @@
                                 <div>
                                     <button id="addressEdit-button"><span class="material-icons edit-icon">edit</span>
                                     </button>
-                                    Address for Maps
+                                    Direccion para Maps
                                 </div>
                                 <div class="profile-data">{{ data.address }}</div>
                             </li>

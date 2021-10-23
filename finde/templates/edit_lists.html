@@ -38,26 +38,26 @@
             <a href="{% url 'edit_profile' %}">
                 <div class="titles">
                     <span class="material-icons menu-icon">manage_accounts</span>
-                    Edit Profile
+                    Editar Perfil
                 </div>
                 <ul class="sub-menu">
-                    <li>Profile picture</li>
-                    <li>Profile data</li>
+                    <li>Imagen de perfil</li>
+                    <li>Datos de perfil</li>
                     <li>Commerce Data</li>
                 </ul>
             </a>
             <a href="{% url 'edit_lists' %}">
                 <div class="titles">
                     <span class="material-icons menu-icon">format_list_bulleted</span>
-                    My lists
+                    Mis Listados
                 </div>
                 <ul class="sub-menu">
-                    <li>See, Add, Erase Lists and Products</li>
+                    <li>Ve, Agrega o Borra listados y productos</li>
                 </ul>
             </a>
             <a>
                 <div class="titles">
-                    <span class="material-icons menu-icon">settings</span>Configuration
+                    <span class="material-icons menu-icon">settings</span>Configuracion
                 </div>
                 <ul class="sub-menu">
                     <li>Change Password</li>
@@ -73,19 +73,19 @@
 
         <div id="list-edit-main">
             <div style="position: fixed; background: white; top: 73px">
-                <div class="main-title"><h3>My products</h3></div>
+                <div class="main-title"><h3>Mis Productos</h3></div>
                 <div style="background: white; height: 115px; width: 1620px">
                     <nav id="list-nav">
                         <button id="filter">
                             <span class="material-icons list-nav-icons">filter_alt</span>
-                            Filter
+                            Filtrar
                         </button>
                         <div id="product-search">
-                            <span class="material-icons search-nav-icon">search</span>
+                            <span class="material-icons search-nav-icon">Buscar</span>
                             <input id="input-search" placeholder="Search product">
                         </div>
                         <a href="{% url 'publish' %}">
-                            <button id="publish">Publish</button>
+                            <button id="publish">Publicar</button>
                         </a>
                     </nav>
                 </div>
@@ -94,7 +94,7 @@
 
             {% if  productData|length == 0 %}
                 <div class="message">
-                    <div><span class="material-icons" style="font-size: 35px !important; margin-right:10px;">filter_alt_off</span>You don't have any products yet!</div>
+                    <div><span class="material-icons" style="font-size: 35px !important; margin-right:10px;">filter_alt_off</span>No tienes productos todavia!</div>
                 </div>
             {% else %}
                 {% for i in productData %}
