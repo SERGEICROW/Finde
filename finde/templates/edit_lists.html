@@ -81,7 +81,7 @@
                             Filtrar
                         </button>
                         <div id="product-search">
-                            <span class="material-icons search-nav-icon">Buscar</span>
+                            <span class="material-icons search-nav-icon">Search</span>
                             <input id="input-search" placeholder="Search product">
                         </div>
                         <a href="{% url 'publish' %}">
@@ -94,7 +94,9 @@
 
             {% if  productData|length == 0 %}
                 <div class="message">
-                    <div><span class="material-icons" style="font-size: 35px !important; margin-right:10px;">filter_alt_off</span>No tienes productos todavia!</div>
+                    <div><span class="material-icons" style="font-size: 35px !important; margin-right:10px;">filter_alt_off</span>No
+                        tienes productos todavia!
+                    </div>
                 </div>
             {% else %}
                 {% for i in productData %}

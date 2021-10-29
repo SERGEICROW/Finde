@@ -35,7 +35,6 @@ class BAddressUpdate(ModelForm):
         model = UserProfile
         fields = ['address']
 
-
 # class NewList(ModelForm):
 #     class Meta:
 #         model = List
@@ -46,3 +45,4 @@ class NewProduct(ModelForm):
     class Meta:
         model = Product
         fields = ['image', 'title', 'description', 'price']
+

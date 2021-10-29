@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -7,15 +8,44 @@ from django.contrib.auth.models import User
 import requests
 
 # Create your views here.
+from django.views.generic import ListView
 
 from .forms import *
 from .models import UserProfile, Product
 
 
 def home(request):
+    data = request.user.userprofile.address
+    # address = list(UserProfile.objects.values('id', 'address'))
+
+    ids = [t[0] for t in UserProfile.objects.values_list('id', 'address')]
+    data2 = [i[1] for i in UserProfile.objects.values_list('id', 'address')]
+    coords = []
+
+
+    # GEOCODE API
+    API_KEY = 'Mi clave de API'
+
+    for i in data2:
+        params = {
+            'key': API_KEY,
+            'address': i
+        }
+
+        base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
+        response = requests.get(base_url, params=params).json()
+        response.keys()
+
+        if response['status'] == 'OK':
+            geometry = response['results'][0]['geometry']
+            lat = geometry['location']['lat']
+            lng = geometry['location']['lng']
+
+            coords.append([lat, lng])
 
     context = {
-
+        'coords': coords,
+        'data': data
     }
 
     return render(request, "home.html", context)
@@ -51,7 +81,8 @@ def logPage(request):
             login(request, user)
             return redirect('home_logged')
         else:
-            messages.info(request, 'Username or Password incorrect')
+            messages.success(request, 'Username or Password incorrect')
+
     context = {}
 
     return render(request, "log.html", context)
@@ -149,45 +180,25 @@ def publish(request):
 
     return render(request, "publish.html", context)
 
-
-@login_required(login_url='log')
-def test(request):
-
-
-    data = request.user.userprofile.address
-    # address = list(UserProfile.objects.values('id', 'address'))
-
-    ids = [t[0] for t in UserProfile.objects.values_list('id', 'address')]
-    data2 = [i[1] for i in UserProfile.objects.values_list('id', 'address')]
-    coords = []
-
-    API_KEY = 'AIzaSyDg2KiBdjUjWwkODdQEWmlOdJAo5mzpNOE'
-
-    for i in data2:
-        params = {
-            'key': API_KEY,
-            'address': i
-        }
-
-        base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
-        response = requests.get(base_url, params=params).json()
-        response.keys()
-
-        if response['status'] == 'OK':
-            geometry = response['results'][0]['geometry']
-            lat = geometry['location']['lat']
-            lng = geometry['location']['lng']
-
-            coords.append([lat, lng])
-
-    context = {
-        'coords': coords,
-        'data': data
-    }
-
-    return render(request, "test.html", context)
-
-
 def logoutUser(request):
     logout(request)
     return redirect('log')
+
+
+# TESTING
+
+# Search bar based in classes
+class SearchView(ListView):
+    model = Product
+    template_name = 'test.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        # result = super(SearchView, self).get_queryset()
+        query = self.request.GET.get('search')
+        if query:
+            postresult = Product.objects.filter(title__contains=query)
+            result = postresult
+        else:
+            result = None
+        return result
