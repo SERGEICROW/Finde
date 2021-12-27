@@ -15,40 +15,40 @@ from .models import UserProfile, Product
 
 
 def home(request):
-    data = request.user.userprofile.address
+    # data = request.user.userprofile.address
     # address = list(UserProfile.objects.values('id', 'address'))
 
-    ids = [t[0] for t in UserProfile.objects.values_list('id', 'address')]
-    data2 = [i[1] for i in UserProfile.objects.values_list('id', 'address')]
-    coords = []
+    # ids = [t[0] for t in UserProfile.objects.values_list('id', 'address')]
+    # data2 = [i[1] for i in UserProfile.objects.values_list('id', 'address')]
+    # coords = []
+    #
+    #
+    # # GEOCODE API
+    # API_KEY = 'Mi clave de API'
+    #
+    # for i in data2:
+    #     params = {
+    #         'key': API_KEY,
+    #         'address': i
+    #     }
+    #
+    #     base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
+    #     response = requests.get(base_url, params=params).json()
+    #     response.keys()
+    #
+    #     if response['status'] == 'OK':
+    #         geometry = response['results'][0]['geometry']
+    #         lat = geometry['location']['lat']
+    #         lng = geometry['location']['lng']
+    #
+    #         coords.append([lat, lng])
+    #
+    # context = {
+    #     'coords': coords,
+    #     'data': data
+    # }
 
-
-    # GEOCODE API
-    API_KEY = 'Mi clave de API'
-
-    for i in data2:
-        params = {
-            'key': API_KEY,
-            'address': i
-        }
-
-        base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
-        response = requests.get(base_url, params=params).json()
-        response.keys()
-
-        if response['status'] == 'OK':
-            geometry = response['results'][0]['geometry']
-            lat = geometry['location']['lat']
-            lng = geometry['location']['lng']
-
-            coords.append([lat, lng])
-
-    context = {
-        'coords': coords,
-        'data': data
-    }
-
-    return render(request, "home.html", context)
+    return render(request, "home.html",{})
 
 
 def signPage(request):
