@@ -48,7 +48,7 @@ def home(request):
     #     'data': data
     # }
 
-    return render(request, "home.html",{})
+    return render(request, "index.html",{})
 
 
 def signPage(request):
